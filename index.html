@@ -6,7 +6,10 @@
     <title>gavagAI</title>
 
     <link rel="stylesheet" href="css/style.css" />
-
+    <link rel="stylesheet" href="css/table.css" />
+    
+    <!-- Добавляем скрипт для генерации таблицы -->
+    <script src="scripts/table-generator.js" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -37,14 +40,12 @@
 
       <article id="section2">
         <div class="table-container">
-          <table>
-            <caption>
-              План встреч
-            </caption>
+          <table id="meetings-table">
+            <caption>План встреч</caption>
             <thead>
               <tr>
-                <th>№</th>
-                <th>Дата</th>
+                <th style="width: 2%;">№</th>
+                <th style="width: 4%;">Дата</th>
                 <th>Тема</th>
                 <th>Литература</th>
                 <th>Методическая карточка</th>
@@ -52,33 +53,11 @@
               </tr>
             </thead>
             <tbody>
+              <!-- Сюда автоматически вставятся строки из JSON -->
               <tr>
-                <td>1</td>
-                <td>27.11.25</td>
-                <td>1. Что такое язык? Философские истоки вопроса</td>
-                <td>
-                  1.<a href="https://plato.today/TEXTS/PLATO/LosevH/0120.htm">Платон, Кратил (фрагменты: 422d–435d)</a>
-                  <br> 2.<a href="https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/75">Ф.де Соссюр, Курс общей лингвистики (Гл. I–II, избр.)</a>
-                  <br> 3. <a href="https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/75">Л. Витгенштейн, Философские исследования §§1–33 (рус.)</a>
-                  <br> <b>Доп материалы</b>
-                  <br> 1. <a href="https://disk.yandex.ru/i/nSNwr5hgtyoUoQ">Д. Дэвидсон, *Истина и интерпретация</a>
-                  <br> 2. <a href="https://disk.yandex.ru/i/TV-j2ljNwZQ_xQ">Л.Бенвенист, Общая лингвистика (Предисловие Ю.Степанова, Гл. 1-2)</a>
+                <td colspan="6" style="text-align: center; padding: 20px;">
+                  Загрузка данных...
                 </td>
-                <td><b>Цель:</b> Что такое языковой знак? Как связаны между собой явления предметного мира, образы в голове и свойства языковых означающих. Понять, что язык — не просто инструмент для коммуникации, а способ конструирования реальности.
-                    <br> <b>Ключевые понятия:</b> знак, означающее/означаемое, языковая игра, конвенция, лингвистика как наука, связи философии и языковых теорий.</td>
-                <td>1. Биографическая справка по персоналиям; 
-                  <br>2. Аннотирование диалога "Кратил"; 
-                  <br>3. Аннотирование Глав "Курса общей лингвистики" Ф. де Соссюра 
-                  <br>4. Обобщение идей "Философских исследований" Л. Витгенштейна 
-                  <br>5. Дискуссия</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
@@ -87,9 +66,7 @@
     </main>
 
     <footer class="site-footer">
-      <p> gavagAI</p>
+      <p>gavagAI</p>
     </footer>
-
-
   </body>
 </html>

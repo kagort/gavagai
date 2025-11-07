@@ -1,0 +1,48 @@
+.table-container {
+    overflow-x: auto;                    /* Горизонтальная прокрутка при переполнении */
+    max-width: 100%;                     /* Не шире родительского контейнера */
+    margin: 20px 0;                      /* Отступы сверху и снизу 20px */
+    border: 1px solid #ddd;              /* Серая рамка толщиной 1px */
+    border-radius: 4px;                  /* Скругленные углы рамки */
+}
+
+table {
+    width: 100%;                         /* Таблица на всю ширину контейнера */
+    min-width: 800px;                    /* Минимальная ширина таблицы */
+    border-collapse: collapse;           /* Объединить границы ячеек */
+}
+
+table th,
+table td {
+    padding: 10px 15px;                  /* Внутренние отступы в ячейках */
+    text-align: left;                    /* Выравнивание текста по левому краю */
+    border: 1px solid #ddd;              /* Границы ячеек */
+    white-space: nowrap;                 /* Запрет переноса текста на новую строку */
+}
+
+table th {
+    background-color: #f8f9fa;           /* Светло-серый фон для заголовков */
+    font-weight: bold;                   /* Жирный шрифт для заголовков */
+    position: sticky;                    /* Липкие заголовки при прокрутке */
+    top: 0;                              /* Прилипают к верхнему краю */
+}
+
+/* Стили для ячеек с контентом (колонки 3-6) */
+table td:nth-child(3),
+table td:nth-child(4),
+table td:nth-child(5),
+table td:nth-child(6) {
+    white-space: normal;                 /* Разрешить перенос текста */
+    word-wrap: break-word;               /* Перенос длинных слов */
+    overflow-wrap: break-word;           /* Современный аналог word-wrap */
+    word-break: normal;                  /* Запретить разрыв слов внутри */
+    hyphens: auto;                       /* Автоматическая расстановка переносов */
+    min-width: 200px;                    /* Минимальная ширина ячеек */
+}
+
+caption {
+    font-size: 1.2em;                    /* Увеличенный размер шрифта */
+    font-weight: bold;                   /* Жирный шрифт для заголовка таблицы */
+    margin-bottom: 10px;                 /* Отступ снизу */
+    caption-side: top;                   /* Расположение заголовка над таблицей */
+}
