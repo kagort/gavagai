@@ -1,0 +1,334 @@
+/* 
+:root - псевдокласс, представляющий корневой элемент документа (<html>)
+Здесь определяем CSS переменные для повторного использования
+*/
+:root {
+    --primary-color: #5d8667;       /* Основной цвет (синий) */
+    --secondary-color: #2ecc71;     /* Вторичный цвет (зеленый) */
+    --text-color: #333;             /* Основной цвет текста */
+    --light-gray: #f5f5f5;          /* Светло-серый фон */
+    --dark-gray: #777;              /* Темно-серый текст */
+    --spacing-unit: 1rem;           /* Базовый отступ (16px по умолчанию) */
+    --border-radius: 4px;           /* Скругление углов */
+}
+
+/* Скрыть скроллбары у всех элементов */
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Базовые стили для всего документа */
+body {
+    min-height: 100vh; /* Важно! Занимает всю высоту окна */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./img/green.jpg'); */
+    display: flex;
+    flex-direction: column;
+
+    /* Запасной цвет фона */
+    background: #396344;
+    
+    /* Картинка поверх цвета */
+    background-image: url('./img/green.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+
+.content {
+    flex: 1; /* Занимает всё оставшееся пространство */
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: var(--spacing-unit);
+    width: 80%;
+    box-sizing: border-box;
+}
+
+
+.content > * {
+    box-sizing: border-box;
+    width: 100%; /* Теперь padding включен в 100% */
+    max-width: 100%; /* На всякий случай */
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+article,
+.cards-container, 
+details,
+aside,
+footer,
+header
+{
+    background-color: rgba(191, 204, 190, 0.95); /* Белый с прозрачностью */
+    /* background-blend-mode: darken; Смешивание с фоном */
+    border-radius: var(--border-radius); /* Скругление углов */
+    padding: var(--spacing-unit);
+}
+
+/* Стили для заголовков */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;                  /* Убираем отступ сверху */
+    line-height: 1.2;               /* Более плотный межстрочный интервал */
+    color: var(--primary-color);    /* Цвет из переменной */
+}
+
+/* Размеры заголовков с использованием rem (относительно размера root элемента) */
+h1 { font-size: 2.5rem; }  /* 40px если 1rem = 16px */
+h2 { font-size: 2rem; }    /* 32px */
+h3 { font-size: 1.75rem; } /* 28px */
+
+/* Стили для абзацев */
+p {
+    margin-bottom: var(--spacing-unit); /* Отступ снизу из переменной */
+}
+
+/* Стили для выделенного текста */
+.highlight {
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 90%;
+    padding: 0 2px;/* Внутренние отступы слева и справа */
+}
+
+.typography-text {
+    font: 14px/1.6 Georgia, serif;       /* Сокращение font + line-height */
+    max-width: 600px;
+    margin: 2.5rem auto;                 /* 40px/16=2.5rem */
+    padding: 1.25rem;                    /* 20px/16=1.25rem */
+    
+}
+
+
+.morphing-bg {
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(45deg, #395b71, #13542f, #597267, #3498db);
+    background-size: 300% 300%;
+    animation: gradient-morph 8s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+@keyframes gradient-morph {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+.navigation, .menu{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.main_menu {
+    /* color: var(--primary-color);    Цвет из переменной */
+    text-decoration: none;          /* Убираем подчеркивание */
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #406781, #287a4a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.main_menu:hover {
+    text-decoration: underline;     /* Подчеркивание при наведении */
+    /* Эффект при наведении */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Эффект нажатия */
+.main_menu:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Блеск при наведении */
+.main_menu::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(30deg);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.main_menu:hover::after {
+    opacity: 1;
+    left: 100%;
+}
+
+/* Стили для шапки и подвала */
+.site-header, .site-footer {
+    padding: var(--spacing-unit);   /* Внутренние отступы из переменной */
+    text-align: center;            /* Выравнивание текста по центру */
+}
+
+
+/* Стили для статей */
+article, details {
+    margin-bottom: calc(var(--spacing-unit) * 2); /* Отступ снизу (умножаем переменную) */
+    padding: var(--spacing-unit);  /* Внутренние отступы */
+    border: 1px solid #ddd;        /* Граница */
+    border-radius: var(--border-radius); /* Скругление углов из переменной */
+}
+
+
+#section1, #section2, #section3 {
+    width: calc(100% - 0px); /* Ширина с учетом gap */
+    position: relative;
+    /* left/right больше не нужны */
+}
+
+/* Стили для таблиц */
+.table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    min-width: 800px; /* Минимальная ширина таблицы */
+    border-collapse: collapse;
+}
+
+/* Дополнительные стили для лучшего отображения */
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Запрет переноса текста */
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+/* Для ячеек с длинным текстом можно разрешить перенос */
+table td:nth-child(3),
+table td:nth-child(4),
+table td:nth-child(5),
+table td:nth-child(6) {
+    white-space: normal;
+    min-width: 200px; /* Минимальная ширина для широких колонок */
+}
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    caption-side: top;
+}
+
+/* --- Медиа-запросы для адаптивности --- */
+
+/* Для планшетов и небольших ноутбуков (до 992px) */
+@media (max-width: 992px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+
+    .content {
+        padding: calc(var(--spacing-unit) * 0.75);
+    }
+}
+
+/* Для мобильных устройств (до 768px) */
+@media (max-width: 768px) {
+    body {
+        /* Уменьшаем основной шрифт на мобильных, 
+           это повлияет на все rem-значения */
+        font-size: 14px; 
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+
+    .typography-text {
+        padding: 1rem;
+        margin: 1.5rem auto;
+    }
+
+    /* 1. ОБЯЗАТЕЛЬНО: Уменьшаем сами кнопки, чтобы они занимали меньше места */
+    .main_menu {
+        padding: 8px 16px; /* Было 12px 24px */
+        font-size: 14px;   /* Было 16px */
+    }
+
+    /* --- ДАЛЕЕ ВЫБЕРИТЕ ОДИН ИЗ ВАРИАНТОВ --- */
+    /* ВАРИАНТ А: Перенос пунктов (хорошо для 3-5 пунктов) */
+    .navigation, .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px; /* Можно немного уменьшить отступ между кнопками */
+    }
+
+    /* 
+    // ВАРИАНТ Б: Горизонтальная прокрутка (хорошо для 5+ пунктов)
+    .navigation, .menu {
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start; // Выравнивание по левому краю для прокрутки
+    }
+    */
+    .content {
+        width: 100%;
+        padding: 2px;
+    }
+
+    table {
+        /* Это свойство заставляет браузер игнорировать ширину контента 
+            и распределять ширину на основе заголовков. Предотвращает растягивание. */
+        table-layout: fixed; 
+        }
+
+        th, td {
+        padding: 4px; /* Уменьшаем внутренние отступы */
+        font-size: 12px; /* Уменьшаем шрифт */
+
+        /* Агрессивный перенос слов. 
+            Браузер будет рвать слова в любом месте, чтобы они поместились. */
+        word-break: break-all;
+        }
+
+}
