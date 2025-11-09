@@ -1,0 +1,89 @@
+/* Стили для страницы материалов */
+.loading-materials {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.material-section {
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.material-section summary {
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    transition: background-color 0.3s ease;
+}
+
+.material-section summary:hover {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.material-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.material-section summary::after {
+    content: '▶';
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.material-section[open] summary::after {
+    transform: rotate(90deg);
+}
+
+.material-content {
+    padding: 0;
+}
+
+.material-content h2 {
+    margin: 0;
+    padding: 20px 20px 10px 20px;
+    color: #333;
+    font-size: 1.3em;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.typography-text {
+    padding: 15px 20px;
+    line-height: 1.6;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.typography-text:last-child {
+    border-bottom: none;
+}
+
+.highlight {
+    background-color: #fff3cd;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Анимация открытия */
+.material-section[open] .material-content {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
