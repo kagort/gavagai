@@ -3,23 +3,16 @@
     {
       "id": 1,
       "title": "Встреча 1: Что такое язык?",
-      "sections": [
-        {
-          "title": "Основные элементы",
-          "content": [
-            "Это абзац текста с <span class='highlight'>выделенным</span> словом.",
-            "Еще один абзац с <strong>жирным</strong>, <em>курсивным</em> и <u>подчеркнутым</u> текстом."
-          ]
-        },
-        {
-          "title": "Списки",
-          "content": [
-            "<h3>Нумерованный список:</h3><ol><li>Первый пункт</li><li>Второй пункт</li><li>Третий пункт</li></ol>",
-            "<h3>Маркированный список:</h3><ul><li>Элемент 1</li><li>Элемент 2</li><li>Элемент 3</li></ul>"
-          ]
-        }
-      ]
+      "date": "2024-01-15",
+      "audio": "materials/meeting1.mp3",
+      "notes": "materials/meeting1.md"
+    },
+    {
+      "id": 2, 
+      "title": "Встреча 2: Язык и сознание",
+      "date": "2024-01-22",
+      "audio": "materials/meeting2-audio.mp3",
+      "notes": "materials/meeting2-notes.md"
     }
-
   ]
 }
