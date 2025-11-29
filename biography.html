@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Биографии известных людей</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/materials.css" />
+    <!-- УБЕРИ ЭТУ СТРОКУ: <script src="scripts/biography.js" defer></script> -->
+</head>
+<body>
+    <header class="site-header">
+        <h1>Научно-практический семинар "gavagAI"</h1>
+        <div class="morphing-bg">
+            <nav class="navigation">
+            <ul class="menu">
+                <li><a class="main_menu" href="index.html">Главная</a></li>
+                <li><a class="main_menu" href="materials.html">Обсуждения</a></li>
+                <li><a class="main_menu" href="biography.html">Информация</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+        
+    <main class="content">
+        <div class="materials-container">
+            <!-- Биографии будут загружены здесь -->
+        </div>
+    </main>
+        
+    <footer>
+        <p>Данные обновлены: <span id="currentDate"></span></p>
+    </footer>
+    
+
+    <!-- ОСТАВЬ ТОЛЬКО ЭТОТ ПОДКЛЮЧЕНИЕ СКРИПТА -->
+    <script src="scripts/biography.js"></script>
+    <script>
+        // Добавляем текущую дату в футер
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('ru-RU');
+    </script>
+</body>
+</html>

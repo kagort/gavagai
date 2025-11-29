@@ -1,0 +1,92 @@
+{
+    "people": [
+        {
+            "id": 1,
+            "full_name": "Платон",
+            "img": "materials/people/platon.png",
+            "birth": {
+                "date": "427 до н.э",
+                "place_id": "afiny"
+            },
+            "death": {
+                "date": "347 до н.э.",
+                "place_id": "afiny"
+            },
+            "biography_text": "materials/people/platon.md",
+            "occupations": ["writer", "philosopher"]
+        },
+        {
+            "id": 2,
+            "full_name": "Ф. де Соссюр",
+            "img": "materials/people/saussure.png",
+            "birth": {
+                "date": "11.26.1857",
+                "place_id": "geneva"
+            },
+            "death": {
+                "date": "2.22.1913",
+                "place_id": "Вюфлан-ле-Шато"
+            },
+            "biography_text": "materials/people/saussure.md"
+        },
+                {
+            "id": 3,
+            "full_name": "Людвиг Витгенштейн",
+            "birth": {
+                "date": "04.26.1889",
+                "place_id": "vienna"
+            },
+            "death": {
+                "date": "04.29.1951",
+                "place_id": ""
+            },
+            "biography_text": "materials/people/wittgenstein.md"
+        },
+                {
+            "id": 4,
+            "full_name": "",
+            "birth": {
+                "date": "",
+                "place_id": ""
+            },
+            "death": {
+                "date": "",
+                "place_id": ""
+            },
+            "biography_text": ""
+        }
+    ],
+
+    "places": [
+        {
+            "id": "afiny",
+            "name": "Афины",
+            "type": "settlement",
+            "coordinates": {
+                "lat": 54.0746,
+                "lon": 37.5266
+            },
+            "description": ""
+        },
+        {
+            "id": "geneva",
+            "name": "Женева",
+            "type": "village",
+            "coordinates": {
+                "lat": 55.6667,
+                "lon": 35.9333
+            },
+            "description": ""
+        },
+        {
+            "id": "vienna",
+            "name": "Вена",
+            "type": "station",
+            "coordinates": {
+                "lat": 52.7333,
+                "lon": 39.6667
+            },
+            "description": ""
+        }
+    ]
+}
