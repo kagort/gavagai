@@ -11,7 +11,7 @@ class MaterialsGenerator {
 
     async loadMaterials() {
         try {
-            const response = await fetch('data/materials.json');
+            const response = await fetch('data/meetings.json');
             const data = await response.json();
             this.materials = data.materials;
         } catch (error) {

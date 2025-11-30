@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadTable() {
     try {
         // Загружаем данные из JSON файла
-        const response = await fetch('data/meetings.json');
+        const response = await fetch('data/index.json');
         const data = await response.json();
         
         // Находим тело таблицы в HTML
