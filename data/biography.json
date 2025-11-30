@@ -1,7 +1,7 @@
 {
     "people": [
         {
-            "id": 1,
+            "id": "platon",
             "full_name": "Платон",
             "img": "materials/people/platon.png",
             "birth": {
@@ -16,7 +16,7 @@
             "occupations": ["writer", "philosopher"]
         },
         {
-            "id": 2,
+            "id": "saussure",
             "full_name": "Ф. де Соссюр",
             "img": "materials/people/saussure.png",
             "birth": {
@@ -25,12 +25,13 @@
             },
             "death": {
                 "date": "2.22.1913",
-                "place_id": "Вюфлан-ле-Шато"
+                "place_id": "Вюфлан-ле-Шато",
+                "circumstances": "Скончался от рака в возрасте 55 лет. Последние годы жизни были омрачены болезнью и усталостью."
             },
             "biography_text": "materials/people/saussure.md"
         },
-                {
-            "id": 3,
+        {
+            "id": "wittgenstein",
             "full_name": "Людвиг Витгенштейн",
             "birth": {
                 "date": "04.26.1889",
@@ -42,7 +43,7 @@
             },
             "biography_text": "materials/people/wittgenstein.md"
         },
-                {
+        {
             "id": 4,
             "full_name": "",
             "birth": {
