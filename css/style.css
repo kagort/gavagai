@@ -216,6 +216,179 @@ article, details {
     /* left/right больше не нужны */
 }
 
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .seminar-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .seminar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .seminar-header {
+            background-color: #b6cec5;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .seminar-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .seminar-number {
+            display: inline-block;
+            background-color: #29b987;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .seminar-date {
+            background-color: #e74c3c;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .seminar-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .seminar-content.active {
+            padding: 25px;
+            max-height: 2000px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: #3b79b7;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .materials-list, .plan-list {
+            list-style-type: none;
+        }
+        
+        .materials-list li, .plan-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ecf0f1;
+        }
+        
+        .materials-list li:last-child, .plan-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .materials-list a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .materials-list a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        .materials-list i {
+            margin-right: 8px;
+            color: #7f8c8d;
+        }
+        
+        .key-concepts {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .key-concepts ul {
+            padding-left: 20px;
+        }
+        
+        .key-concepts li {
+            margin-bottom: 8px;
+        }
+        
+        .plan-list li {
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .plan-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .seminar-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .seminar-date {
+                margin-top: 10px;
+                align-self: flex-start;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+
+
 /* --- Медиа-запросы для адаптивности --- */
 
 /* Для планшетов и небольших ноутбуков (до 992px) */
