@@ -6,13 +6,6 @@
       "date": "2025-11-27",
       "audio": "materials/meetings/meeting1.mp3",
       "notes": "materials/meetings/meeting1.md"
-    },
-    {
-      "id": 2, 
-      "title": "Встреча 2: Язык и сознание",
-      "date": "2024-01-22",
-      "audio": "materials/meeting2-audio.mp3",
-      "notes": "materials/meeting2-notes.md"
     }
   ]
 
