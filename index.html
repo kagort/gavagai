@@ -1,73 +1,438 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gavagAI</title>
-
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/table.css" />
-    
-    <!-- Добавляем скрипт для генерации таблицы -->
-    <script src="scripts/index_table-generator.js" defer></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <h1>Научно-практический семинар "gavagAI"</h1>
-      <div class="morphing-bg">
-        <nav class="navigation">
-          <ul class="menu">
-            <li><a class="main_menu" href="#section2">План встреч</a></li>
-            <li><a class="main_menu" href="meetings.html">Обсуждения</a></li>
-            <li><a class="main_menu" href="biography.html">Информация</a></li>
-
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main class="content">
-      <article id="section1">
-        <p class="typography-text">
-          «Гавагай» — знаменитый мысленный эксперимент Уилларда Куайна из его работы "Слово и объект" (1960). 
-          <hr>
-          В этом эксперименте лингвист-исследователь сталкивается с носителем неизвестного языка, который при виде кролика произносит: «Gavagai!». 
-          Возникает фундаментальная проблема: что именно означает это слово? «Кролик»? «Вот кролик»? «Кроличья сущность»? «Мгновение кролика»?
-          <hr>
-          Цель семинара «gavagAI» — это попытка самостоятельного осмысления связи языка, сознания, тела и культуры в контексте соверменных технологических прорыров в области ИИ.
-          Название отражает центральную тему семинара — поиски смысла на границе между вербализованным человеческим опытом и машинной симуляцией порождения языковых знаков.
-        </p>
-      </article>
-
-      <article id="section2">
-        <div class="table-container">
-          <table id="meetings-table">
-            <caption>План встреч</caption>
-            <thead>
-              <tr>
-                <th style="width: 2%;">№</th>
-                <th style="width: 4%;">Дата</th>
-                <th>Тема</th>
-                <th>Литература</th>
-                <th>Методическая карточка</th>
-                <th>План семинара</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Сюда автоматически вставятся строки из JSON -->
-              <tr>
-                <td colspan="6" style="text-align: center; padding: 20px;">
-                  Загрузка данных...
-                </td>
-              </tr>
-            </tbody>
-          </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Семинары по философии языка и лингвистике</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        .seminar-container {
+            margin-bottom: 30px;
+        }
+        
+        .seminar-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .seminar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .seminar-header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .seminar-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .seminar-number {
+            display: inline-block;
+            background-color: #2980b9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .seminar-date {
+            background-color: #e74c3c;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .seminar-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .seminar-content.active {
+            padding: 25px;
+            max-height: 2000px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .materials-list, .plan-list {
+            list-style-type: none;
+        }
+        
+        .materials-list li, .plan-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ecf0f1;
+        }
+        
+        .materials-list li:last-child, .plan-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .materials-list a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .materials-list a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        .materials-list i {
+            margin-right: 8px;
+            color: #7f8c8d;
+        }
+        
+        .key-concepts {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .key-concepts ul {
+            padding-left: 20px;
+        }
+        
+        .key-concepts li {
+            margin-bottom: 8px;
+        }
+        
+        .plan-list li {
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .plan-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        
+        .chevron.rotated {
+            transform: rotate(180deg);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .seminar-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .seminar-date {
+                margin-top: 10px;
+                align-self: flex-start;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-language"></i> Семинары по философии языка и лингвистике</h1>
+            <p class="subtitle">Курс для глубокого изучения природы языка и его структуры</p>
+        </header>
+        
+        <div class="seminar-container" id="seminars-container">
+            <!-- Семинары будут загружены сюда через JavaScript -->
         </div>
-      </article>
-    </main>
+        
+        <footer>
+            <p>Все материалы предоставлены для образовательных целей. Ссылки ведут на внешние ресурсы.</p>
+            <p>© 2025 Семинары по философии языка</p>
+        </footer>
+    </div>
 
-    <footer class="site-footer">
-      <p>gavagAI</p>
-    </footer>
-  </body>
+    <script>
+        // Данные семинаров
+        const seminarsData = {
+  "meetings": [
+    {
+      "number": 1,
+      "date": "27.11.25 (16:00-19:00)",
+      "topic": "Что такое язык? Философские истоки вопроса",
+      "literature": [
+        {
+          "title": "Платон, Кратил (фрагменты: 422d–435d)",
+          "url": "https://plato.today/TEXTS/PLATO/LosevH/0120.htm"
+        },
+        {
+          "title": "Ф.де Соссюр, Курс общей лингвистики (Гл. I–II, избр.)",
+          "url": "https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/75"
+        },
+        {
+          "title": "Л. Витгенштейн, Философские исследования §§1–33 (рус.)",
+          "url": "https://disk.yandex.ru/i/9I2RQb9IDqFdEw"
+        }
+      ],
+      "additionalMaterials": [
+        {
+          "title": "Д. Дэвидсон, Истина и интерпретация",
+          "url": "https://disk.yandex.ru/i/nSNwr5hgtyoUoQ"
+        },
+        {
+          "title": "Э.Бенвенист, Общая лингвистика (Предисловие Ю.Степанова, Гл. 1-2)",
+          "url": "https://disk.yandex.ru/i/TV-j2ljNwZQ_xQ"
+        }
+      ],
+      "materials": "Цель: Что такое языковой знак? Как связаны между собой явления предметного мира, образы в голове и свойства языковых означающих. Понять, что язык — не просто инструмент для коммуникации, а способ конструирования реальности.",
+      "keyConcepts": "знак, означающее/означаемое, языковая игра, конвенция, лингвистика как наука, связи философии и языковых теорий",
+      "plan": [
+        "Биографическая справка по персоналиям",
+        "Аннотирование диалога 'Кратил'",
+        "Перерыв (чаепитие)",
+        "Аннотирование Глав 'Курса общей лингвистики' Ф. де Соссюра",
+        "Обобщение идей 'Философских исследований' Л. Витгенштейна",
+        "Дискуссия"
+      ]
+    },
+    {
+      "number": 2,
+      "date": "18.12.2025 (16:00-19:00)",
+      "topic": "Структурализм и первая научная лингвистика",
+      "literature": [
+        {
+          "title": "Ф.де Соссюр, Курс общей лингвистики (Гл. III–IV)",
+          "url": "https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/87"
+        },
+        {
+          "title": "Якобсон, Лингвистика и поэтика (введение)",
+          "url": "https://do.ssau.ru/moodle/pluginfile.php/325805/mod_folder/content/0/"
+        },
+        {
+          "title": "Z. Harris, Methods in Structural Linguistics (Intro, англ.)",
+          "url": "https://ia601600.us.archive.org/0/items/structurallingui00harr/structurallingui00harr.pdf"
+        }
+      ],
+      "additionalMaterials": [
+        {
+          "title": "Трубецкой, Основы фонологии",
+          "url": "https://disk.yandex.ru/i/q_LcBlZ3Ih67hw"
+        },
+        {
+          "title": "Леви-Строс, Структурная антропология",
+          "url": "https://disk.yandex.ru/i/1vSdeJI3DlXFuw"
+        },
+        {
+          "title": "Степанов, Основы общего языкознания",
+          "url": "https://disk.yandex.ru/i/lxM__U9UN90mlQ"
+        }
+      ],
+      "materials": "Показать, как язык переосмысливается как внутренне организованная система, а не совокупность независимых элементов; познакомить с методологическими основами структурного подхода в лингвистике и смежных гуманитарных дисциплинах.",
+      "keyConcepts": [
+        "Синхрония / диахрония – различение между системным состоянием языка в данный момент и его историческим развитием",
+        "Парадигма / синтагма – два измерения языковой структуры: выбор из эквивалентных единиц и их комбинирование в цепочку",
+        "Дифференция – определение знака не по содержанию, а по его отличию от других знаков в системе",
+        "Фонологическая оппозиция (Трубецкой) – функциональное противопоставление звуков, лежащее в основе значимости",
+        "Структурная модель (Леви-Строс) – перенос лингвистической методологии на анализ мифов, родства и культуры"
+      ],
+      "plan": [
+        "Биографическая справка по персоналиям (Якобсон, Харрис, Трубецкой, Леви-Строс, Степанов)",
+        "Аннотирование III-IV глав 'Курса общей лингвистики' де Соссюра",
+        "Аннотирование Введения к книге Харрис",
+        "Аннотирование 'Структурной антропологии' Леви-Строса",
+        "Обобщение идей 'Основ общего языкознания Ю.С. Степанова'",
+        "Дискуссия"
+      ]
+    }
+  ]
+};
+
+        // Функция для загрузки и отображения семинаров
+        function loadSeminars() {
+            const container = document.getElementById('seminars-container');
+            
+            seminarsData.meetings.forEach(seminar => {
+                // Создание карточки семинара
+                const seminarCard = document.createElement('div');
+                seminarCard.className = 'seminar-card';
+                
+                // Заголовок семинара
+                const seminarHeader = document.createElement('div');
+                seminarHeader.className = 'seminar-header';
+                seminarHeader.innerHTML = `
+                    <div>
+                        <h2><span class="seminar-number">Семинар ${seminar.number}</span>${seminar.topic}</h2>
+                    </div>
+                    <div class="seminar-date">${seminar.date}</div>
+                    <div class="chevron"><i class="fas fa-chevron-down"></i></div>
+                `;
+                
+                // Содержимое семинара (скрыто по умолчанию)
+                const seminarContent = document.createElement('div');
+                seminarContent.className = 'seminar-content';
+                
+                // Форматирование ключевых понятий
+                let keyConceptsHTML = '';
+                if (Array.isArray(seminar.keyConcepts)) {
+                    keyConceptsHTML = '<ul>' + seminar.keyConcepts.map(concept => `<li>${concept}</li>`).join('') + '</ul>';
+                } else {
+                    keyConceptsHTML = `<p>${seminar.keyConcepts}</p>`;
+                }
+                
+                // Форматирование литературы
+                const literatureHTML = seminar.literature.map(item => 
+                    `<li><i class="fas fa-book"></i> <a href="${item.url}" target="_blank">${item.title}</a></li>`
+                ).join('');
+                
+                // Форматирование дополнительных материалов
+                const additionalMaterialsHTML = seminar.additionalMaterials.map(item => 
+                    `<li><i class="fas fa-file-alt"></i> <a href="${item.url}" target="_blank">${item.title}</a></li>`
+                ).join('');
+                
+                // Форматирование плана
+                const planHTML = seminar.plan.map(item => `<li>${item}</li>`).join('');
+                
+                // Заполнение содержимого
+                seminarContent.innerHTML = `
+                    <div class="section">
+                        <h3 class="section-title"><i class="fas fa-bullseye"></i> Цель и материалы</h3>
+                        <p>${seminar.materials}</p>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title"><i class="fas fa-key"></i> Ключевые понятия</h3>
+                        <div class="key-concepts">
+                            ${keyConceptsHTML}
+                        </div>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title"><i class="fas fa-book-open"></i> Основная литература</h3>
+                        <ul class="materials-list">
+                            ${literatureHTML}
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title"><i class="fas fa-plus-circle"></i> Дополнительные материалы</h3>
+                        <ul class="materials-list">
+                            ${additionalMaterialsHTML}
+                        </ul>
+                    </div>
+                    
+                    <div class="section">
+                        <h3 class="section-title"><i class="fas fa-list-ol"></i> План занятия</h3>
+                        <ol class="plan-list">
+                            ${planHTML}
+                        </ol>
+                    </div>
+                `;
+                
+                // Добавление обработчика клика для раскрытия/скрытия
+                seminarHeader.addEventListener('click', function() {
+                    seminarContent.classList.toggle('active');
+                    const chevron = this.querySelector('.chevron i');
+                    chevron.classList.toggle('rotated');
+                });
+                
+                // Сборка карточки
+                seminarCard.appendChild(seminarHeader);
+                seminarCard.appendChild(seminarContent);
+                
+                // Добавление в контейнер
+                container.appendChild(seminarCard);
+            });
+            
+            // Открыть первый семинар по умолчанию
+            const firstSeminarContent = container.querySelector('.seminar-content');
+            const firstChevron = container.querySelector('.chevron i');
+            if (firstSeminarContent) {
+                firstSeminarContent.classList.add('active');
+                firstChevron.classList.add('rotated');
+            }
+        }
+        
+        // Загрузка семинаров при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadSeminars);
+    </script>
+</body>
 </html>
