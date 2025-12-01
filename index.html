@@ -6,6 +6,8 @@
     <title>Семинары по философии языка и лингвистике</title>
     <link rel="stylesheet" href="css/style.css" />
 
+    <script src="scripts/index.js" defer></script>
+
 </head>
 <body>
     <header class="site-header">
@@ -20,219 +22,16 @@
             </nav>
         </div>
     </header>
-        
+    
+    <main class="content">
         <div id="seminars-container">
             <!-- Семинары будут загружены сюда через JavaScript -->
         </div>
-        
-        <footer>
-            <p>Все материалы предоставлены для образовательных целей. Ссылки ведут на внешние ресурсы.</p>
-            <p>© 2025 Семинары по философии языка</p>
-        </footer>
+    </main>
+    <footer class="site-footer">
+        <p>Все материалы предоставлены для образовательных целей. Ссылки ведут на внешние ресурсы.</p>
+        <p>© 2025 Семинары по философии языка</p>
+    </footer>
     </div>
-
-    <script>
-        // Данные семинаров
-        const seminarsData = {
-  "meetings": [
-    {
-      "number": 1,
-      "date": "27.11.25 (16:00-19:00)",
-      "topic": "Что такое язык? Философские истоки вопроса",
-      "literature": [
-        {
-          "title": "Платон, Кратил (фрагменты: 422d–435d)",
-          "url": "https://plato.today/TEXTS/PLATO/LosevH/0120.htm"
-        },
-        {
-          "title": "Ф.де Соссюр, Курс общей лингвистики (Гл. I–II, избр.)",
-          "url": "https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/75"
-        },
-        {
-          "title": "Л. Витгенштейн, Философские исследования §§1–33 (рус.)",
-          "url": "https://disk.yandex.ru/i/9I2RQb9IDqFdEw"
-        }
-      ],
-      "additionalMaterials": [
-        {
-          "title": "Д. Дэвидсон, Истина и интерпретация",
-          "url": "https://disk.yandex.ru/i/nSNwr5hgtyoUoQ"
-        },
-        {
-          "title": "Э.Бенвенист, Общая лингвистика (Предисловие Ю.Степанова, Гл. 1-2)",
-          "url": "https://disk.yandex.ru/i/TV-j2ljNwZQ_xQ"
-        }
-      ],
-      "materials": "Цель: Что такое языковой знак? Как связаны между собой явления предметного мира, образы в голове и свойства языковых означающих. Понять, что язык — не просто инструмент для коммуникации, а способ конструирования реальности.",
-      "keyConcepts": "знак, означающее/означаемое, языковая игра, конвенция, лингвистика как наука, связи философии и языковых теорий",
-      "plan": [
-        "Биографическая справка по персоналиям",
-        "Аннотирование диалога 'Кратил'",
-        "Перерыв (чаепитие)",
-        "Аннотирование Глав 'Курса общей лингвистики' Ф. де Соссюра",
-        "Обобщение идей 'Философских исследований' Л. Витгенштейна",
-        "Дискуссия"
-      ]
-    },
-    {
-      "number": 2,
-      "date": "18.12.2025 (16:00-19:00)",
-      "topic": "Структурализм и первая научная лингвистика",
-      "literature": [
-        {
-          "title": "Ф.де Соссюр, Курс общей лингвистики (Гл. III–IV)",
-          "url": "https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/87"
-        },
-        {
-          "title": "Якобсон, Лингвистика и поэтика (введение)",
-          "url": "https://do.ssau.ru/moodle/pluginfile.php/325805/mod_folder/content/0/"
-        },
-        {
-          "title": "Z. Harris, Methods in Structural Linguistics (Intro, англ.)",
-          "url": "https://ia601600.us.archive.org/0/items/structurallingui00harr/structurallingui00harr.pdf"
-        }
-      ],
-      "additionalMaterials": [
-        {
-          "title": "Трубецкой, Основы фонологии",
-          "url": "https://disk.yandex.ru/i/q_LcBlZ3Ih67hw"
-        },
-        {
-          "title": "Леви-Строс, Структурная антропология",
-          "url": "https://disk.yandex.ru/i/1vSdeJI3DlXFuw"
-        },
-        {
-          "title": "Степанов, Основы общего языкознания",
-          "url": "https://disk.yandex.ru/i/lxM__U9UN90mlQ"
-        }
-      ],
-      "materials": "Показать, как язык переосмысливается как внутренне организованная система, а не совокупность независимых элементов; познакомить с методологическими основами структурного подхода в лингвистике и смежных гуманитарных дисциплинах.",
-      "keyConcepts": [
-        "Синхрония / диахрония – различение между системным состоянием языка в данный момент и его историческим развитием",
-        "Парадигма / синтагма – два измерения языковой структуры: выбор из эквивалентных единиц и их комбинирование в цепочку",
-        "Дифференция – определение знака не по содержанию, а по его отличию от других знаков в системе",
-        "Фонологическая оппозиция (Трубецкой) – функциональное противопоставление звуков, лежащее в основе значимости",
-        "Структурная модель (Леви-Строс) – перенос лингвистической методологии на анализ мифов, родства и культуры"
-      ],
-      "plan": [
-        "Биографическая справка по персоналиям (Якобсон, Харрис, Трубецкой, Леви-Строс, Степанов)",
-        "Аннотирование III-IV глав 'Курса общей лингвистики' де Соссюра",
-        "Аннотирование Введения к книге Харрис",
-        "Аннотирование 'Структурной антропологии' Леви-Строса",
-        "Обобщение идей 'Основ общего языкознания Ю.С. Степанова'",
-        "Дискуссия"
-      ]
-    }
-  ]
-};
-
-        // Функция для загрузки и отображения семинаров
-        function loadSeminars() {
-            const container = document.getElementById('seminars-container');
-            
-            seminarsData.meetings.forEach(seminar => {
-                // Создание карточки семинара
-                const seminarCard = document.createElement('div');
-                seminarCard.className = 'seminar-card';
-                
-                // Заголовок семинара
-                const seminarHeader = document.createElement('div');
-                seminarHeader.className = 'seminar-header';
-                seminarHeader.innerHTML = `
-                    <div>
-                        <h2><span class="seminar-number">Семинар ${seminar.number}</span>${seminar.topic}</h2>
-                    </div>
-                    <div class="seminar-date">${seminar.date}</div>
-                    <div class="chevron"><i class="fas fa-chevron-down"></i></div>
-                `;
-                
-                // Содержимое семинара (скрыто по умолчанию)
-                const seminarContent = document.createElement('div');
-                seminarContent.className = 'seminar-content';
-                
-                // Форматирование ключевых понятий
-                let keyConceptsHTML = '';
-                if (Array.isArray(seminar.keyConcepts)) {
-                    keyConceptsHTML = '<ul>' + seminar.keyConcepts.map(concept => `<li>${concept}</li>`).join('') + '</ul>';
-                } else {
-                    keyConceptsHTML = `<p>${seminar.keyConcepts}</p>`;
-                }
-                
-                // Форматирование литературы
-                const literatureHTML = seminar.literature.map(item => 
-                    `<li><i class="fas fa-book"></i> <a href="${item.url}" target="_blank">${item.title}</a></li>`
-                ).join('');
-                
-                // Форматирование дополнительных материалов
-                const additionalMaterialsHTML = seminar.additionalMaterials.map(item => 
-                    `<li><i class="fas fa-file-alt"></i> <a href="${item.url}" target="_blank">${item.title}</a></li>`
-                ).join('');
-                
-                // Форматирование плана
-                const planHTML = seminar.plan.map(item => `<li>${item}</li>`).join('');
-                
-                // Заполнение содержимого
-                seminarContent.innerHTML = `
-                    <div class="section">
-                        <h3 class="section-title"><i class="fas fa-bullseye"></i> Цель и материалы</h3>
-                        <p>${seminar.materials}</p>
-                    </div>
-                    
-                    <div class="section">
-                        <h3 class="section-title"><i class="fas fa-key"></i> Ключевые понятия</h3>
-                        <div class="key-concepts">
-                            ${keyConceptsHTML}
-                        </div>
-                    </div>
-                    
-                    <div class="section">
-                        <h3 class="section-title"><i class="fas fa-book-open"></i> Основная литература</h3>
-                        <ul class="materials-list">
-                            ${literatureHTML}
-                        </ul>
-                    </div>
-                    
-                    <div class="section">
-                        <h3 class="section-title"><i class="fas fa-plus-circle"></i> Дополнительные материалы</h3>
-                        <ul class="materials-list">
-                            ${additionalMaterialsHTML}
-                        </ul>
-                    </div>
-                    
-                    <div class="section">
-                        <h3 class="section-title"><i class="fas fa-list-ol"></i> План занятия</h3>
-                        <ol class="plan-list">
-                            ${planHTML}
-                        </ol>
-                    </div>
-                `;
-                
-                // Добавление обработчика клика для раскрытия/скрытия
-                seminarHeader.addEventListener('click', function() {
-                    seminarContent.classList.toggle('active');
-                    const chevron = this.querySelector('.chevron i');
-                    chevron.classList.toggle('rotated');
-                });
-                
-                // Сборка карточки
-                seminarCard.appendChild(seminarHeader);
-                seminarCard.appendChild(seminarContent);
-                
-                // Добавление в контейнер
-                container.appendChild(seminarCard);
-            });
-            
-            // Открыть первый семинар по умолчанию
-            const firstSeminarContent = container.querySelector('.seminar-content');
-            const firstChevron = container.querySelector('.chevron i');
-            if (firstSeminarContent) {
-                firstSeminarContent.classList.add('active');
-                firstChevron.classList.add('rotated');
-            }
-        }
-        
-        // Загрузка семинаров при загрузке страницы
-        document.addEventListener('DOMContentLoaded', loadSeminars);
-    </script>
 </body>
 </html>

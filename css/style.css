@@ -64,11 +64,7 @@ body {
     max-width: 100%; /* На всякий случай */
 }
 
-footer {
-    flex-shrink: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
+
 
 
 article,
@@ -216,10 +212,17 @@ article, details {
     /* left/right больше не нужны */
 }
 
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-        }
+.seminars-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 0; /* Важно для flex-контейнеров */
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 1.2rem;
+}
         
         .seminar-card {
             background-color: white;
