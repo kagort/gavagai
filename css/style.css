@@ -404,62 +404,20 @@ article, details {
     }
 }
 
-/* Для мобильных устройств (до 768px) */
 @media (max-width: 768px) {
-    body {
-        /* Уменьшаем основной шрифт на мобильных, 
-           это повлияет на все rem-значения */
-        font-size: 14px; 
+    /* Отключаем ВСЕ анимации и трансформации */
+    * {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
     }
-
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.5rem; }
-
-    .typography-text {
-        padding: 1rem;
-        margin: 1.5rem auto;
+    
+    /* Но оставляем быструю обратную связь при нажатии */
+    .main_menu:active {
+        opacity: 0.8;
     }
-
-    /* 1. ОБЯЗАТЕЛЬНО: Уменьшаем сами кнопки, чтобы они занимали меньше места */
-    .main_menu {
-        padding: 8px 16px; /* Было 12px 24px */
-        font-size: 14px;   /* Было 16px */
+    
+    .seminar-header:active {
+        background-color: #9cbab0;
     }
-
-    /* --- ДАЛЕЕ ВЫБЕРИТЕ ОДИН ИЗ ВАРИАНТОВ --- */
-    /* ВАРИАНТ А: Перенос пунктов (хорошо для 3-5 пунктов) */
-    .navigation, .menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px; /* Можно немного уменьшить отступ между кнопками */
-    }
-
-    /* 
-    // ВАРИАНТ Б: Горизонтальная прокрутка (хорошо для 5+ пунктов)
-    .navigation, .menu {
-        overflow-x: auto;
-        white-space: nowrap;
-        justify-content: flex-start; // Выравнивание по левому краю для прокрутки
-    }
-    */
-    .content {
-        width: 100%;
-        padding: 2px;
-    }
-
-    table {
-        /* Это свойство заставляет браузер игнорировать ширину контента 
-            и распределять ширину на основе заголовков. Предотвращает растягивание. */
-        table-layout: fixed; 
-        }
-
-        th, td {
-        padding: 4px; /* Уменьшаем внутренние отступы */
-        font-size: 12px; /* Уменьшаем шрифт */
-
-        /* Агрессивный перенос слов. 
-            Браузер будет рвать слова в любом месте, чтобы они поместились. */
-        word-break: break-all;
-        }
-
 }
