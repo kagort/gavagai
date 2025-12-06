@@ -403,21 +403,41 @@ article, details {
         padding: calc(var(--spacing-unit) * 0.75);
     }
 }
-
 @media (max-width: 768px) {
-    /* Отключаем ВСЕ анимации и трансформации */
-    * {
-        animation: none !important;
-        transition: none !important;
-        transform: none !important;
+    body {
+        /* Уменьшаем основной шрифт на мобильных, 
+           это повлияет на все rem-значения */
+        font-size: 14px; 
     }
-    
-    /* Но оставляем быструю обратную связь при нажатии */
-    .main_menu:active {
-        opacity: 0.8;
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+
+    .typography-text {
+        padding: 1rem;
+        margin: 1.5rem auto;
     }
-    
-    .seminar-header:active {
-        background-color: #9cbab0;
+
+    /* 1. ОБЯЗАТЕЛЬНО: Уменьшаем сами кнопки, чтобы они занимали меньше места */
+    .main_menu {
+        padding: 8px 16px; /* Было 12px 24px */
+        font-size: 14px;   /* Было 16px */
+    }
+
+    .main_menu::after {
+        display: none !important;
+    }
+
+    /* --- ДАЛЕЕ ВЫБЕРИТЕ ОДИН ИЗ ВАРИАНТОВ --- */
+    /* ВАРИАНТ А: Перенос пунктов (хорошо для 3-5 пунктов) */
+    .navigation, .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px; /* Можно немного уменьшить отступ между кнопками */
+    }
+
+    .content {
+        width: 100%;
+        padding: 2px;
     }
 }
