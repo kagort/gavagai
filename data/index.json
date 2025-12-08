@@ -41,7 +41,7 @@
     },
     {
       "number": 2,
-      "date": "18.12.2025 (16:00-19:00)",
+      "date": "19.12.2025 (16:00-19:00)",
       "topic": "Структурализм и первая научная лингвистика",
       "literature": [
         {
@@ -49,8 +49,8 @@
           "url": "https://urait.ru/viewer/kurs-obschey-lingvistiki-564393#page/87"
         },
         {
-          "title": "Якобсон, Лингвистика и поэтика (введение)",
-          "url": "https://do.ssau.ru/moodle/pluginfile.php/325805/mod_folder/content/0/"
+          "title": "Р.О.Якобсон, Лингвистика и поэтика (введение)",
+          "url": "https://do.ssau.ru/moodle/pluginfile.php/325805/mod_folder/content/0/%D0%AF%D0%BA%D0%BE%D0%B1%D1%81%D0%BE%D0%BD%20%D0%9B%D0%B8%D0%BD%D0%B3%D0%B2%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0%20%D0%B8%20%D0%BF%D0%BE%D1%8D%D1%82%D0%B8%D0%BA%D0%B0.pdf?forcedownload=1"
         },
         {
           "title": "Z. Harris, Methods in Structural Linguistics (Intro, англ.)",
@@ -59,15 +59,15 @@
       ],
       "additionalMaterials": [
         {
-          "title": "Трубецкой, Основы фонологии",
+          "title": "Н.С.Трубецкой, Основы фонологии",
           "url": "https://disk.yandex.ru/i/q_LcBlZ3Ih67hw"
         },
         {
-          "title": "Леви-Строс, Структурная антропология",
+          "title": "К.Леви-Строс, Структурная антропология",
           "url": "https://disk.yandex.ru/i/1vSdeJI3DlXFuw"
         },
         {
-          "title": "Степанов, Основы общего языкознания",
+          "title": "Ю.С.Степанов, Основы общего языкознания",
           "url": "https://disk.yandex.ru/i/lxM__U9UN90mlQ"
         }
       ],
