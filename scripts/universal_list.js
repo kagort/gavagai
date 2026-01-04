@@ -3,13 +3,13 @@ class UniversalLoader {
         // Базовые настройки для каждой страницы
         this.configs = {
             'meetings.html': {
-                json: '../data/meetings.json',
+                json: 'data/meetings.json',
                 container: '.materials-container',
                 dataKey: 'materials', // Ключ для массива данных
                 template: 'meeting' // Используем шаблон встреч
             },
             'biography.html': {
-                json: '../data/biography.json',
+                json: 'data/biography.json',
                 container: '.materials-container',
                 dataKey: 'people',
                 template: 'person' // Используем шаблон "person"
