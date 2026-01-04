@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gavagAI - Материалы</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обсуждение встреч</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/meetings.css" />
-    
-    <!-- Добавляем скрипт для генерации материалов -->
-    <script src="scripts/meetings-generator.js" defer></script>
+    <link rel="stylesheet" href="css/universal_list.css" />
+    <!-- УБЕРИ ЭТУ СТРОКУ: <script src="scripts/biography.js" defer></script> -->
 </head>
 <body>
     <header class="site-header">
-        <h1>Материалы семинара "gavagAI"</h1>
+        <h1>Научно-практический семинар "gavagAI"</h1>
         <div class="morphing-bg">
             <nav class="navigation">
-                <ul class="menu">
-                    <li><a class="main_menu" href="index.html">Главная</a></li>
-                    <li><a class="main_menu" href="meetings.html">Обсуждения</a></li>
-                    <li><a class="main_menu" href="biography.html">Информация</a></li>
+            <ul class="menu">
+                <li><a class="main_menu" href="index.html">Главная</a></li>
+                <li><a class="main_menu" href="meetings.html">Обсуждения</a></li>
+                <li><a class="main_menu" href="biography.html">Информация</a></li>
+            </ul>
             </nav>
         </div>
     </header>
-
-    <main class="content">
         
+    <main class="content">
         <div class="materials-container">
-    
-        <!-- Оригинальный загрузчик -->
-        <div class="loading">Загрузка материалов...</div>
+            <!-- Биографии будут загружены здесь -->
         </div>
     </main>
-
+        
     <footer class="site-footer">
         <p>gavagAI</p>
     </footer>
+    
 
-<script>
-console.log('Скрипт загружен!');
-</script>
+    <!-- ОСТАВЬ ТОЛЬКО ЭТОТ ПОДКЛЮЧЕНИЕ СКРИПТА -->
+    <script src="scripts/universal_list.js"></script>
+    <script>
+        // Добавляем текущую дату в футер
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('ru-RU');
+    </script>
 </body>
 </html>

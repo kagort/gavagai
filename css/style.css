@@ -65,8 +65,6 @@ body {
 }
 
 
-
-
 article,
 .cards-container, 
 details,
@@ -207,8 +205,9 @@ article, details {
 
 
 #section1, #section2, #section3 {
-    width: calc(100% - 0px); /* Ширина с учетом gap */
+    width: 90%; /* Ширина с учетом gap */
     position: relative;
+    margin: 5%;
     /* left/right больше не нужны */
 }
 

@@ -6,6 +6,13 @@
       "date": "2025-11-27",
       "audio": "materials/meetings/meeting1.mp3",
       "notes": "materials/meetings/meeting1.md"
+    },
+    {
+      "id": 2,
+      "title": "Встреча 2: Структурализм и первая научная лингвистика",
+      "date": "2025-12-19",
+      "audio": "materials/meetings/meeting2.mp3",
+      "notes": "materials/meetings/meeting2.md"
     }
   ]
 
