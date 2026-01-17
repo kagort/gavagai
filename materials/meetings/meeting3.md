@@ -495,9 +495,7 @@ Grice H. P. Logic and conversation. -- In: «Syntax and semantics», v. 3, ed. b
 <note type="quote">
 
 **Связь с христианской традицией**:\
-Гадамер обращается к учению о [**Внутреннем Слове**](materials/dop_info/verbum_interius.md) у Августина и Фомы Аквинского:
-
-</note>
+Гадамер обращается к учению о [Внутреннем Слове](materials/dop_info/verbum_interius.md) у Августина и Фомы Аквинского:
 
 ---
 
