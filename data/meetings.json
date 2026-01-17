@@ -13,6 +13,13 @@
       "date": "2025-12-19",
       "audio": "materials/meetings/meeting2.mp3",
       "notes": "materials/meetings/meeting2.md"
+    },
+    {
+      "id": 3,
+      "title": "Встреча 3: Поворот к смыслу: герменевтика, прагматика, речевые акты",
+      "date": "2026-01-15",
+      "audio": "",
+      "notes": "materials/meetings/meeting3.md"
     }
   ]
 
