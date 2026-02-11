@@ -163,6 +163,48 @@
       "keyConcepts": [],
       "plan": [""
       ]
+    },
+    {
+      "number": 5,
+      "date": "19.02.2026 (16:00-19:00)",
+      "topic": "От бумажных словарей к машинному переводу",
+      "literature": [
+        {
+          "title": "Hutchins, Early Years of MT",
+          "url": "https://disk.yandex.ru/i/dTYYbYX7rFbAOA"
+        },
+        {
+          "title": "Y. Bar-Hillel, A Demonstration of the Nonfeasibility of Fully Automatic High Quality Translation",
+          "url": "https://aclanthology.org/www.mt-archive.info/Bar-Hillel-1960-App3.pdf"
+        },
+        {
+          "title": "Виноград, Понимание естественного языка* (введение)",
+          "url": "https://disk.yandex.ru/i/rYUnbVKLEp5UWw"
+        },
+        {
+          "title": "PROCEDURES AS A REPRESENTATION FOR DATA IN A COMPUTER PROGRAM FOR UNDERSTANDING NATURAL LANGUAGE Terry Winograd Massachusetts Institute of Technology January 1971",
+          "url": "https://disk.yandex.ru/i/xf7cEoqqQqks9g"
+        }
+      ],
+      "additionalMaterials": [
+        {
+          "title": "Weizenbaum, *ELIZA* (1966)",
+          "url": "https://sites.google.com/view/elizaarchaeology/home?authuser=0"
+        },
+        {
+          "title": "Непейвода, Основания информатики",
+          "url": "https://habr.com/ru/companies/skillfactory/articles/597253/                            "
+        }
+
+      ],
+      "materials": "Цель: Понять причины первого «зимнего периода» ИИ. Ключевые понятия: машинный перевод, семантическая неоднозначность, world knowledge. \n Вопросы: Почему Бар-Хиллел считал MT невозможным без «знания мира»? Что мог (и не мог) делать ELIZA? \n Задание: Возьмите фразу с омонимией («ключ воды» / «ключ от двери»). Объясните, почему 1950-е алгоритмы не справились бы.                                                                                                                    ",
+      "keyConcepts": [],
+      "plan": ["1. Доклад Анастасии Бесединой 'Этапы становления машинного перевода'", 
+                "2. Аннотирование Бар-Хилел;", 
+                "3. Аннотирование Хатчинс",
+                "4. Аннотирование Виноград",
+                "5. Дискуссия: 'Соотношение машинного перевода и человеческого знания о мире: вчера, сегодня, завтра'"   
+      ]
     }
   ]
 }
