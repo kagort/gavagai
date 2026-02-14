@@ -20,6 +20,13 @@
       "date": "2026-01-15",
       "audio": "",
       "notes": "materials/meetings/meeting3.md"
+    },
+    {
+      "id": 4,
+      "title": "Встреча 4: Когнитивный поворот в науках о языке",
+      "date": "2026-01-29",
+      "audio": "materials/meetings/meeting4.mp3",
+      "notes": "materials/meetings/meeting4.md"
     }
   ]
 
