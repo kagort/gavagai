@@ -205,6 +205,48 @@
                 "4. Аннотирование Виноград",
                 "5. Дискуссия: 'Соотношение машинного перевода и человеческого знания о мире: вчера, сегодня, завтра'"   
       ]
+    },
+    {
+      "number": 6,
+      "date": "19.03.2026 (16:00-19:00)",
+      "topic": "Статистический поворот: корпусы и семантика",
+      "literature": [
+        {
+          "title": "Manning & Schütze, Foundations of Statistical NLP (Ch. 1)",
+          "url": "https://disk.yandex.ru/i/-VXzOzpqzcxAFg"
+        },
+        {
+          "title": "Firth, «You shall know a word by the company it keeps» STUDIES IN LINGUISTIC ANALYSIS",
+          "url": "https://languagelog.ldc.upenn.edu/myl/Firth1957.pdf"
+        },
+        {
+          "title": "Копотев М. В. О некоторых следствия корпусной лингвистики для общей теории языка",
+          "url": "https://elar.uspu.ru/bitstream/ru-uspu/54387/1/fkls-2021-02-07.pdf"
+        }
+      ],
+      "additionalMaterials": [
+        {
+          "title": "Stefan Evert 'Corpora and collocations'",
+          "url": "https://lexically.net/downloads/corpus_linguistics/Evert2008.pdf"
+        },
+        {
+          "title": "Kilgarriff, 'Web as corpus'",
+          "url": "https://ucrel.lancs.ac.uk/publications/CL2003/CL2001%20conference/papers/kilgarri.pdf"
+        },
+        {
+          "title": "В.П. Захаров, С.Ю. Богданова 'Корпусная лингвистика'",
+          "url": "https://disk.yandex.ru/i/kbZ4QftyJjk5Gg"
+        }
+
+      ],
+      "materials": "Цель: Понять принцип distributional semantics. \nКлючевые понятия: корпус, коллокация, n-грамма, вектор слова. \nВопросы: Почему «аромат» и «благоухание» ближе друг к другу, чем к «вони»? Как построить портрет слова?",
+      "keyConcepts": [],
+      "plan": ["1. Доклад Лолиты Велис с обзором источников",
+              "2. Биографии авторов (Барышников П.Н.)",
+              "3. Практикум по работе с корпусом и по работе с основными библиотеками Python для NLP."
+              ]
+
+
     }
   ]
 }
