@@ -148,6 +148,26 @@ class SeminarsGenerator {
                 </div>
             `;
         }
+
+        // ключевые слова
+        if (seminar.keyConcepts.length > 0) {
+            let planHTML = '';
+            if (Array.isArray(seminar.keyConcepts)) {
+                planHTML = seminar.keyConcepts.map(item => `<li>${item}</li>`).join('');
+            }
+            html += `
+                <div class="section">
+                    <details style="background-color: #f0f0f0;">
+                        <summary class="section-title"> 
+                            <i class="fas fa-tags"> Ключевые слова </i>
+                        </summary>
+                        <ol class="keywords-list">
+                            ${planHTML}
+                        </o>
+                    </details>
+                </div>
+            `;
+        }
         
         // Если данных совсем нет
         if (!html) {

@@ -29,7 +29,7 @@
         }
       ],
       "materials": "Цель: Что такое языковой знак? Как связаны между собой явления предметного мира, образы в голове и свойства языковых означающих. Понять, что язык — не просто инструмент для коммуникации, а способ конструирования реальности.",
-      "keyConcepts": "знак, означающее/означаемое, языковая игра, конвенция, лингвистика как наука, связи философии и языковых теорий",
+      "keyConcepts": ["знак", "означающее/означаемое", "языковая игра", "конвенция", "лингвистика как наука", "связи философии и языковых теорий"],
       "plan": [
         "Биографическая справка по персоналиям",
         "Аннотирование диалога 'Кратил'",
@@ -247,6 +247,59 @@
               ]
 
 
+    },
+        {
+      "number": 7,
+      "date": "02.04.2026 (16:00-19:00)",
+      "topic": "Эпоха эмбеддингов и трансформеров",
+      "literature": [
+        {
+          "title": "Модели генеративного искусственного интеллекта с полным их разоблачением",
+          "url": "https://www.unkniga.ru/ai/modeli-generativnogo-iskusstvennogo-intellekta-s-polnym-ikh-razoblacheniem.html"
+        },
+        {
+          "title": "Mikolov et al., Word2Vec (2013)",
+          "url": "https://arxiv.org/pdf/1301.3781"
+        },
+        {
+          "title": "Vaswani et al., Attention is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "title": "Christopher D. Manning. Human Language Understanding & Reasoning",
+          "url": "https://www.amacad.org/publication/daedalus/human-language-understanding-reasoning"
+        },
+        {
+          "title": "Stanford CS224N (лекции) (Важно!)",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture02-wordvecs.pdf"
+        }
+      ],
+      "additionalMaterials": [
+
+      ],
+      "materials": "Понять, как нейросети «учат» семантику слов по числовым зависимостям",
+      "keyConcepts": ["Векторное представление слова -- Word vector / Word embedding", "Дистрибутивная семантика -- Distributional semantics", "Денотативная семантика -- Denotational semantics", 
+                        "Унитарный вектор -- One-hot vector", "Скалярное произведение -- Dot product",
+                        "Функция softmax -- Softmax function", "Сигмоидная функция -- Sigmoid / Logistic function",
+                        "Функция потерь -- Loss / Cost / Objective function", "Правдоподобие -- Likelihood",
+                        "Градиентный спуск -- Gradient descent", "Стохастический градиентный спуск -- Stochastic gradient descent (SGD)",
+                        "Шаг обучения -- Learning rate", "Отрицательное сэмплирование -- Negative sampling",
+                        "Матрица совместной встречаемости -- Co-occurrence matrix", "Сингулярное разложение -- Singular Value Decomposition (SVD)",
+                        "Латентный семантический анализ -- Latent Semantic Analysis (LSA)", "Распознавание именованных сущностей -- Named Entity Recognition (NER)",
+                        "Интринсическая / Экстринсическая оценка -- Intrinsic / Extrinsic evaluation",
+                        "Аналогия слов -- Word analogy","Гиперним -- Hypernym", "Синонимическое множество -- Synset",
+                        "Центральное слово -- Center word", "Контекстное слово -- Context word / Outside word",
+                        "Окно контекста -- Context window","Разреженный вектор -- Sparse vector",
+                        "Плотный вектор -- Dense vector","Словарь -- Vocabulary", "Корпус -- Corpus",
+                        "Непрерывный мешок слов -- Continuous Bag of Words (CBOW)","Пропускаемые n-граммы -- Skip-gram"        
+                      ],
+
+      "plan": ["1. Доклады участников с обзором материалов",
+              "2. Практикум по работе с Word vector / Word embedding"
+              ]
+
+
     }
+
   ]
 }
