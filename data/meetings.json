@@ -18,7 +18,7 @@
       "id": 3,
       "title": "Встреча 3: Поворот к смыслу: герменевтика, прагматика, речевые акты",
       "date": "2026-01-15",
-      "audio": "",
+      "audio": "materials/meetings/meeting3.mp3",
       "notes": "materials/meetings/meeting3.md"
     },
     {
@@ -27,6 +27,27 @@
       "date": "2026-01-29",
       "audio": "materials/meetings/meeting4.mp3",
       "notes": "materials/meetings/meeting4.md"
+    },
+    {
+      "id": 5,
+      "title": "Встреча 5: От бумажных словарей к машинному переводу",
+      "date": "2026-02-19",
+      "audio": "materials/meetings/meeting5.mp3",
+      "notes": "materials/meetings/meeting5.md"
+    },
+    {
+      "id": 6,
+      "title": "Встреча 6: Статистический поворот: корпусы и семантика",
+      "date": "2026-03-19",
+      "audio": "materials/meetings/meeting6.mp3",
+      "notes": "materials/meetings/meeting6.md"
+    },
+    {
+      "id": 7,
+      "title": "Встреча 7: Эпоха эмбеддингов и трансформеров",
+      "date": "2026-04-02",
+      "audio": "materials/meetings/meeting7.mp3",
+      "notes": "materials/meetings/meeting7.md"
     }
   ]
 
