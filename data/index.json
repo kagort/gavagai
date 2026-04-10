@@ -248,7 +248,7 @@
 
 
     },
-        {
+    {
       "number": 7,
       "date": "02.04.2026 (16:00-19:00)",
       "topic": "Эпоха эмбеддингов и трансформеров",
@@ -296,6 +296,45 @@
 
       "plan": ["1. Доклады участников с обзором материалов",
               "2. Практикум по работе с Word vector / Word embedding"
+              ]
+
+
+    },
+        {
+      "number": 8,
+      "date": "30.04.2026 (16:00-19:00)",
+      "topic": "Семантика, онтологии и вычислимость смысла",
+      "literature": [
+        {
+          "title": "ОНТОЛОГИИ И ТЕЗАУРУСЫ Учебное пособие Соловьев В.Д., Добров Б.В., Иванов В.В., Лукашевич Н.В.",
+          "url": "https://ryk-kypc2.narod.ru/ontotez.pdf"
+        },
+        {
+          "title": "Добров, Б. В., & Лукашевич, Н. В. (2007). *Лингвистическая онтология по естественным наукам и технологиям для приложений в сфере информационного поиска. Ученые записки Казанского университета. Серия Физико-математические науки, 149 (2), 49-72.",
+          "url": "https://cyberleninka.ru/article/n/lingvisticheskaya-ontologiya-po-estestvennym-naukam-i-tehnologiyam-dlya-prilozheniy-v-sfere-informatsionnogo-poiska"
+        },
+        {
+          "title": "Guarino N., Oberle D., Staab S. «What Is an Ontology?»* // Handbook on Ontologies, Springer, 2009.",
+          "url": "https://iaoa.org/isc2012/docs/Guarino2009_What_is_an_Ontology.pdf"
+        },
+        {
+          "title": "Nirenburg & Raskin, *Ontological Semantics*",
+          "url": "https://www.nzdr.ru/data/media/biblio/kolxoz/L/LF/Nirenburg%20S.,%20Raskin%20V.%20Ontological%20Semantics%20(MIT,%202004)(ISBN%200262140861)(O)(329s)_LF_.pdf"
+        }
+      ],
+      "additionalMaterials": [
+
+      ],
+      "materials": "Понять, можно ли формализовать смысл",
+      "keyConcepts": ["онтология", "концептуализация", "семантическая роль",
+                      "логическая форма", "классификация (таксономия)", "экземпляр (индивид)", 
+                      "объектное свойство", "аксиома", "композициональность", "именованные сущности", 
+                      "граф знаний", "OWL (Web Ontology Language)", "SPARQL", "автоматический вывод (reasoning)",
+                      "текстово-смысловое представление (TMR)"
+                      ],
+
+      "plan": ["1. Доклады участников с обзором материалов",
+              "2. Практикум по работе с  библиотекой owlready2"
               ]
 
 
