@@ -1,0 +1,172 @@
+{
+ "edges": [
+  {
+   "source": "russell",
+   "target": "wittgenstein",
+   "type": "teacher",
+   "label": "учитель"
+  },
+  {
+   "source": "russell",
+   "target": "quine",
+   "type": "idea",
+   "label": "логицизм → Куайн"
+  },
+  {
+   "source": "harris",
+   "target": "chomsky",
+   "type": "teacher",
+   "label": "учитель"
+  },
+  {
+   "source": "quine",
+   "target": "davidson",
+   "type": "teacher",
+   "label": "научный руководитель"
+  },
+  {
+   "source": "austin",
+   "target": "searle",
+   "type": "teacher",
+   "label": "научный руководитель"
+  },
+  {
+   "source": "austin",
+   "target": "grice",
+   "type": "colleague",
+   "label": "Оксфорд"
+  },
+  {
+   "source": "grice",
+   "target": "searle",
+   "type": "colleague",
+   "label": "Беркли"
+  },
+  {
+   "source": "jakobson",
+   "target": "trubetzkoy",
+   "type": "colleague",
+   "label": "Пражский кружок"
+  },
+  {
+   "source": "jakobson",
+   "target": "levistrauss",
+   "type": "coauthor",
+   "label": "Нью-Йорк, 1940-е"
+  },
+  {
+   "source": "jakobson",
+   "target": "benveniste",
+   "type": "colleague",
+   "label": "коллеги"
+  },
+  {
+   "source": "saussure",
+   "target": "jakobson",
+   "type": "idea",
+   "label": "влияние"
+  },
+  {
+   "source": "saussure",
+   "target": "benveniste",
+   "type": "idea",
+   "label": "через А. Мейе"
+  },
+  {
+   "source": "benveniste",
+   "target": "stepanov",
+   "type": "idea",
+   "label": "рецепция в СССР"
+  },
+  {
+   "source": "gadamer",
+   "target": "habermas",
+   "type": "opponent",
+   "label": "спор о герменевтике"
+  },
+  {
+   "source": "searle",
+   "target": "recanati",
+   "type": "opponent",
+   "label": "полемика в прагматике"
+  },
+  {
+   "source": "chomsky",
+   "target": "lakoff",
+   "type": "opponent",
+   "label": "учитель → оппонент"
+  },
+  {
+   "source": "chomsky",
+   "target": "barhillel",
+   "type": "opponent",
+   "label": "полемика"
+  },
+  {
+   "source": "lakoff",
+   "target": "johnson",
+   "type": "coauthor",
+   "label": "соавторы"
+  },
+  {
+   "source": "lakoff",
+   "target": "talmy",
+   "type": "colleague",
+   "label": "когнитивная лингвистика"
+  },
+  {
+   "source": "weizenbaum",
+   "target": "winograd",
+   "type": "colleague",
+   "label": "MIT"
+  },
+  {
+   "source": "manning",
+   "target": "schutze",
+   "type": "coauthor",
+   "label": "учебники NLP"
+  },
+  {
+   "source": "bender",
+   "target": "koller",
+   "type": "coauthor",
+   "label": "Climbing towards NLU"
+  },
+  {
+   "source": "lukashevich",
+   "target": "dobrov",
+   "type": "coauthor",
+   "label": "РуТез"
+  },
+  {
+   "source": "solovyev",
+   "target": "dobrov",
+   "type": "coauthor",
+   "label": "пособие 2006"
+  },
+  {
+   "source": "solovyev",
+   "target": "lukashevich",
+   "type": "coauthor",
+   "label": "пособие 2006"
+  },
+  {
+   "source": "firth",
+   "target": "mikolov",
+   "type": "idea",
+   "label": "дистрибутивный принцип"
+  },
+  {
+   "source": "quine",
+   "target": "bender",
+   "type": "idea",
+   "label": "гавагай → осьминог"
+  },
+  {
+   "source": "plato",
+   "target": "chomsky",
+   "type": "idea",
+   "label": "рационализм → нативизм"
+  }
+ ]
+}

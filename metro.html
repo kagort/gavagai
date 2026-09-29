@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Схема линии «Гавагай» — gavagAI</title>
+<meta name="description" content="Семинар gavagAI в виде схемы метро: одиннадцать станций-встреч сезона 2025/26.">
+<script>try{var t=localStorage.getItem('gvg-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .metro-head { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding: 36px 0 22px; border-bottom: 3px solid var(--ink); }
+  .metro-head .line-bullet { width: 58px; height: 58px; border-radius: 50%; background: var(--phil); color: #fff; display: grid; place-items: center; font: 700 28px/1 var(--font-display); flex: 0 0 auto; }
+  .metro-head h1 { font-size: clamp(22px, 3.4vw, 34px); text-transform: uppercase; letter-spacing: .02em; margin: 0; }
+  .metro-head p { color: var(--muted); margin: 6px 0 0; font-size: 15px; }
+  .metro-note { margin-left: auto; text-align: right; font-size: 14px; color: var(--muted); border-left: 2px solid var(--hair); padding-left: 18px; line-height: 1.55; }
+  .metro-note b { color: var(--ink); }
+  .legend { display: flex; gap: 12px 26px; flex-wrap: wrap; align-items: center; padding: 14px 0; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--hair); }
+  .legend span { display: flex; align-items: center; gap: 9px; }
+  .swatch { width: 34px; height: 6px; border-radius: 3px; flex: 0 0 auto; }
+  .swatch.dashed { background: repeating-linear-gradient(90deg, var(--ghost) 0 5px, transparent 5px 11px); }
+  .dot-here { width: 12px; height: 12px; border-radius: 50%; background: var(--phil); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--phil) 45%, transparent); } 70% { box-shadow: 0 0 0 11px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  .map-scroll { overflow-x: auto; margin: 10px -24px 0; padding: 0 24px; }
+  .map-scroll svg { display: block; min-width: 960px; width: 100%; height: auto; }
+  .st-name { font: 600 15px var(--font); fill: var(--ink); }
+  .st-date { font: 400 12px var(--font); fill: var(--muted); }
+  .st-ghost { font: italic 400 13px var(--font); fill: var(--muted); }
+  .station { cursor: pointer; outline: none; }
+  .station .core { fill: var(--surface); transition: r .15s; }
+  .station:hover .core, .station:focus-visible .core { r: 14; }
+  .station:focus-visible .core { stroke-width: 7; }
+  .station:hover .st-name, .station:focus-visible .st-name { text-decoration: underline; }
+  .scroll-hint { display: none; font-size: 13px; color: var(--muted); margin-top: 8px; }
+  @media (max-width: 980px) { .scroll-hint { display: block; } }
+  @media (max-width: 720px) { .metro-note { display: none; } .map-scroll { margin: 10px -16px 0; padding: 0 16px; } }
+</style>
+<script src="scripts/site.js" defer></script>
+<script src="scripts/pages/metro.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+  <div class="wrap">
+    <header class="metro-head">
+      <div class="line-bullet" aria-hidden="true">Г</div>
+      <div>
+        <h1>Линия «Гавагай»</h1>
+        <p>Философия языка · лингвистика · NLP — аспирантский семинар, ноябрь 2025 → июнь 2026</p>
+      </div>
+      <div class="metro-note" id="metro-note"></div>
+    </header>
+    <div class="legend">
+      <span><i class="swatch" style="background:var(--phil)"></i>Философские основания · встречи 1–4</span>
+      <span><i class="swatch" style="background:var(--tech)"></i>Технический поворот · встречи 5–8</span>
+      <span><i class="swatch" style="background:var(--synth)"></i>Синтез · встречи 9–11</span>
+      <span><i class="swatch dashed"></i>проектируется</span>
+      <span><i class="dot-here"></i>вы здесь</span>
+    </div>
+    <div class="map-scroll" id="metro-map"><div class="loading"><div class="spinner"></div>Загрузка…</div></div>
+    <p class="scroll-hint">← Схему можно прокручивать в сторону →</p>
+    <p class="muted small" style="margin-top:18px">Нажмите на станцию, чтобы открыть краткое содержание встречи. Клавиатура: Tab — к станции, Enter — открыть.</p>
+  </div>
+</main>
+<div id="site-footer"></div>
+</body>
+</html>
