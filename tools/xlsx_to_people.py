@@ -11,7 +11,7 @@
   перезаписываются значениями из таблицы, если ячейка не пуста;
 - «кураторские» поля сайта (id, name, full, segment, meeting, country, alive, img, bio, note)
   не трогаются — их правят прямо в people.json;
-- новые строки таблицы добавляются в конец с segment="base" и meeting=0.
+- новые строки таблицы добавляются в конец с segment="phil" и meeting=0.
 """
 import datetime as dt
 import json
@@ -179,7 +179,7 @@ def main():
             name = x["last"] or x["first"]
             full = " ".join(filter(None, [x["first"], x["middle"], x["last"]]))
             b, d = fields["birth"]["year"], fields["death"]["year"]
-            p = {"id": slug(name), "name": name, "full": full, "segment": "base", "meeting": 0,
+            p = {"id": slug(name), "name": name, "full": full, "segment": "phil", "meeting": 0,
                  "country": (x["citizenship"] or "").split("/")[0].split("→")[0].strip(),
                  "alive": not x["deathDate"] and b is not None and b > 1920, "img": "", "bio": "", "note": ""}
             people.append(p)

@@ -22,7 +22,7 @@ GVG.page((D) => {
     if (p.keywords?.length) h += `<h4>Ключевые слова</h4><p>${esc(p.keywords.join('; '))}</p>`;
     if (p.contribution) h += `<h4>Вклад</h4><p>${esc(p.contribution)}</p>`;
     if (p.works) h += `<h4>Основные труды</h4><p>${esc(p.works)}</p>`;
-    if (p.role) h += `<div class="callout" data-seg="${p.segment}" style="font-style:normal;margin-top:16px"><b>Роль в истории ИИ / КТМ</b>${esc(p.role)}</div>`;
+    if (p.role) h += `<div class="callout" data-seg="${p.segment}" style="font-style:normal;margin-top:16px"><b>Роль в истории ИИ и вычислительной теории сознания</b>${esc(p.role)}</div>`;
     if (p.institutions?.length) h += `<h4>Университеты и центры</h4><p>${esc(p.institutions.join(' · '))}</p>`;
     if (p.awards?.length) h += `<h4>Награды</h4><p>${esc(p.awards.join('; '))}</p>`;
     if (p.note) h += `<h4>Примечания</h4><p>${esc(p.note)}</p>`;
@@ -46,9 +46,9 @@ GVG.page((D) => {
   const chip = (p) => `<button type="button" class="person-chip" data-person="${p.id}">${avatar(p)}${esc(p.name)}</button>`;
 
   /* ---------- Фильтр ---------- */
-  const segs = ['all', 'phil', 'tech', 'synth', 'base'];
+  const segs = ['all', 'phil', 'tech', 'synth'];
   $('#seg-filter').innerHTML = segs.map((s) => `<button class="chip chip-sm" data-seg-f="${s}">${s === 'all' ? 'Все' : `<i class="dot" data-seg="${s}"></i>${SEGMENTS[s].short}`}</button>`).join('');
-  $('#seglegend').innerHTML = ['phil', 'tech', 'synth', 'base'].map((s) => `<span><i class="dot" data-seg="${s}"></i>${SEGMENTS[s].title} (${SEGMENTS[s].range})</span>`).join('');
+  $('#seglegend').innerHTML = ['phil', 'tech', 'synth'].map((s) => `<span><i class="dot" data-seg="${s}"></i>${SEGMENTS[s].title} (${SEGMENTS[s].range})</span>`).join('');
   function applyFilter() {
     $$('[data-seg-f]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.segF === state.seg));
     const n = P.filter(visible).length;
@@ -271,7 +271,7 @@ GVG.page((D) => {
       type: 'bar',
       data: {
         labels: cents,
-        datasets: ['phil', 'tech', 'synth', 'base'].map((s) => ({
+        datasets: ['phil', 'tech', 'synth'].map((s) => ({
           label: SEGMENTS[s].title, backgroundColor: alpha(segColor(s)), borderRadius: 3,
           data: cents.map((_, i) => P.filter((p) => p.segment === s && p.birth?.year != null && bucket(p.birth.year) === i).length)
         }))
@@ -324,7 +324,7 @@ GVG.page((D) => {
     charts.push(new Chart($('#ageChart'), {
       type: 'scatter',
       data: {
-        datasets: ['phil', 'tech', 'synth', 'base'].map((s) => ({
+        datasets: ['phil', 'tech', 'synth'].map((s) => ({
           label: SEGMENTS[s].title, data: pts.filter((d) => d.p.segment === s),
           backgroundColor: alpha(segColor(s)), borderColor: segColor(s), pointRadius: 6, pointHoverRadius: 9
         }))
@@ -333,7 +333,7 @@ GVG.page((D) => {
         maintainAspectRatio: false,
         plugins: { legend: { position: 'bottom', labels: { boxWidth: 12 } }, tooltip: { callbacks: { label: (c) => `${c.raw.p.name}: ${c.raw.y} лет — ${c.raw.work}` } } },
         scales: { x: { grid, title: { display: true, text: 'год публикации' }, ticks: { callback: (v) => v } }, y: { grid, title: { display: true, text: 'возраст автора' } } },
-        onClick: (e, el) => { if (el.length) openPerson(pts.filter((d) => d.p.segment === ['phil', 'tech', 'synth', 'base'][el[0].datasetIndex])[el[0].index].p.id); },
+        onClick: (e, el) => { if (el.length) openPerson(pts.filter((d) => d.p.segment === ['phil', 'tech', 'synth'][el[0].datasetIndex])[el[0].index].p.id); },
         onHover: (e, el) => { e.native.target.style.cursor = el.length ? 'pointer' : 'default'; }
       }
     }));

@@ -8,8 +8,7 @@
   const SEGMENTS = {
     phil:  { title: 'Философские основания', short: 'Философия', range: 'встречи 1–4' },
     tech:  { title: 'Технический поворот',   short: 'Технологии', range: 'встречи 5–8' },
-    synth: { title: 'Синтез',                short: 'Синтез',     range: 'встречи 9–11' },
-    base:  { title: 'База КТМ',              short: 'База',       range: 'вне программы' }
+    synth: { title: 'Синтез',                short: 'Синтез',     range: 'встречи 9–11' }
   };
 
   const NAV = [
