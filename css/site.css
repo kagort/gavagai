@@ -87,11 +87,7 @@ button { font: inherit; color: inherit; }
 }
 .site-header .wrap { display: flex; align-items: center; gap: 18px; height: var(--header-h); }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); flex: 0 0 auto; }
-.brand-bullet {
-  width: 36px; height: 36px; border-radius: 50%; background: var(--phil); color: #fff;
-  display: grid; place-items: center; font: 700 17px/1 var(--font-display);
-}
-.brand-name { font: 700 17px/1 var(--font-display); letter-spacing: .01em; }
+.brand-name { font: 700 19px/1 var(--font-display); letter-spacing: .01em; }
 .brand-name b { color: var(--phil); font-weight: 700; }
 .nav { display: flex; gap: 2px; margin-left: 8px; overflow-x: auto; scrollbar-width: none; }
 .nav::-webkit-scrollbar { display: none; }

@@ -177,7 +177,7 @@
         <a class="skip-link" href="#main">К содержанию</a>
         <div class="site-header"><div class="wrap">
           <a class="brand" href="index.html" aria-label="gavagAI — на главную">
-            <span class="brand-bullet">Г</span><span class="brand-name">gavag<b>AI</b></span>
+            <span class="brand-name">gavag<b>AI</b></span>
           </a>
           <nav class="nav" aria-label="Разделы">
             ${NAV.map((n) => `<a href="${n.href}"${n.href === current ? ' aria-current="page"' : ''}>${n.label}</a>`).join('')}
