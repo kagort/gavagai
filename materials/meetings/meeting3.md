@@ -1144,7 +1144,7 @@ Grice H. P. Logic and conversation. -- In: «Syntax and semantics», v. 3, ed. b
 
 -  **Критика метафизики значения**: все авторы, кроме, возможно, раннего Сёрла, отвергают идею фиксированного, вне-контекстного значения.
 
-<img src="materials/meetings/meeting3.4.png" style="width: 200px; height: 300px;">
+<img src="materials/meetings/meeting3_4.png" style="width: 200px; height: 300px;">
 
 ---
 

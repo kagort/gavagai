@@ -1,0 +1,184 @@
+{
+ "themes": [
+  {
+   "id": "philosophy-of-language",
+   "title": "Философия языка",
+   "description": "Что такое значение, референция и истина — от логического анализа языка до радикальной интерпретации.",
+   "people": [
+    "russell",
+    "wittgenstein",
+    "davidson",
+    "austin",
+    "grice",
+    "searle",
+    "recanati",
+    "quine",
+    "barhillel"
+   ],
+   "meetings": [
+    1,
+    3,
+    5,
+    9
+   ]
+  },
+  {
+   "id": "pragmatics",
+   "title": "Прагматика и речевые акты",
+   "description": "Язык как действие: перформативы, импликатуры, речевые акты и контекстуальное обогащение смысла.",
+   "people": [
+    "austin",
+    "grice",
+    "searle",
+    "habermas",
+    "recanati"
+   ],
+   "meetings": [
+    3
+   ]
+  },
+  {
+   "id": "structuralism",
+   "title": "Структурализм и фонология",
+   "description": "Язык как система различий: от Соссюра и Пражского кружка до дистрибутивного метода и структурной антропологии.",
+   "people": [
+    "saussure",
+    "jakobson",
+    "trubetzkoy",
+    "levistrauss",
+    "harris",
+    "stepanov"
+   ],
+   "meetings": [
+    2
+   ]
+  },
+  {
+   "id": "cognitive-science",
+   "title": "Когнитивная наука",
+   "description": "Язык как ментальная способность: генеративная грамматика, концептуальная метафора, когнитивная семантика.",
+   "people": [
+    "chomsky",
+    "lakoff",
+    "johnson",
+    "thagard",
+    "talmy"
+   ],
+   "meetings": [
+    4
+   ]
+  },
+  {
+   "id": "distributional-semantics",
+   "title": "Дистрибутивная семантика",
+   "description": "«You shall know a word by the company it keeps»: значение как распределение — от Фёрса до word2vec.",
+   "people": [
+    "firth",
+    "schutze",
+    "manning",
+    "mikolov",
+    "evert"
+   ],
+   "meetings": [
+    6,
+    7
+   ]
+  },
+  {
+   "id": "ai-critique",
+   "title": "Критика ИИ и groundedness",
+   "description": "Понимает ли машина? ELIZA, SHRDLU, «Китайская комната» и спор о заземлённости смысла у языковых моделей.",
+   "people": [
+    "searle",
+    "weizenbaum",
+    "winograd",
+    "bender",
+    "koller"
+   ],
+   "meetings": [
+    3,
+    5,
+    9
+   ]
+  },
+  {
+   "id": "corpus-linguistics",
+   "title": "Корпусная лингвистика",
+   "description": "Язык в больших данных: корпусы, коллокации, статистические меры ассоциации.",
+   "people": [
+    "firth",
+    "kilgarriff",
+    "evert",
+    "kopotev"
+   ],
+   "meetings": [
+    6
+   ]
+  },
+  {
+   "id": "ontologies",
+   "title": "Онтологии и тезаурусы",
+   "description": "Можно ли формализовать смысл: онтологии, тезаурусы, OntoClean, РуТез.",
+   "people": [
+    "guarino",
+    "solovyev",
+    "dobrov",
+    "lukashevich"
+   ],
+   "meetings": [
+    8
+   ]
+  },
+  {
+   "id": "logic",
+   "title": "Логика",
+   "description": "Формализация мышления: логицизм, теория дескрипций, логическая семантика.",
+   "people": [
+    "russell",
+    "quine",
+    "barhillel"
+   ],
+   "meetings": [
+    5,
+    9
+   ]
+  },
+  {
+   "id": "semiotics",
+   "title": "Семиотика",
+   "description": "Наука о знаках: означающее и означаемое, функции языка, семиологический проект.",
+   "people": [
+    "saussure",
+    "jakobson",
+    "stepanov"
+   ],
+   "meetings": [
+    2
+   ]
+  },
+  {
+   "id": "machine-translation",
+   "title": "Машинный перевод",
+   "description": "От эйфории 1950-х к «зиме ИИ»: история и пределы автоматического перевода.",
+   "people": [
+    "hutchins",
+    "barhillel"
+   ],
+   "meetings": [
+    5
+   ]
+  },
+  {
+   "id": "hermeneutics",
+   "title": "Герменевтика",
+   "description": "Понимание как событие: историчность, горизонт, спор Гадамера и Хабермаса.",
+   "people": [
+    "gadamer",
+    "habermas"
+   ],
+   "meetings": [
+    3
+   ]
+  }
+ ]
+}

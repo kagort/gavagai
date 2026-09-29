@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Атлас персоналий — gavagAI</title>
+<meta name="description" content="Интерактивный атлас персоналий семинара gavagAI: линия времени, карта, граф связей, университеты, темы и статистика.">
+<script>try{var t=localStorage.getItem('gvg-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="scripts/vendor/leaflet/leaflet.css">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  :root { --philT: color-mix(in srgb, var(--phil) 8%, transparent); --techT: color-mix(in srgb, var(--tech) 8%, transparent);
+          --techT2: color-mix(in srgb, var(--tech) 14%, transparent); --synthT: color-mix(in srgb, var(--synth) 9%, transparent); }
+  .atlas-bar { position: sticky; top: var(--header-h); z-index: 40; background: color-mix(in srgb, var(--paper) 92%, transparent);
+               backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--hair); }
+  .atlas-bar .wrap { display: flex; gap: 10px 14px; align-items: center; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+  .atlas-bar .field { height: 36px; flex: 0 1 260px; }
+  .atlas-toc { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+  .atlas-toc a { padding: 6px 10px; border-radius: 999px; font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .atlas-toc a:hover { color: var(--ink); background: var(--surface-2); }
+  @media (max-width: 1100px) { .atlas-toc { margin-left: 0; width: 100%; } }
+  @media (max-width: 760px) { .atlas-bar { position: static; } }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 26px; }
+  .kpi { background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); padding: 16px 18px; }
+  .kpi b { display: block; font: 700 26px/1.1 var(--font-display); color: var(--seg, var(--ink)); }
+  .kpi span { display: block; font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+  .seglegend { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .seglegend span { display: flex; align-items: center; gap: 7px; }
+  .panel-card { background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); }
+  /* Линия времени */
+  .tl-wrap { padding: 18px 18px 10px; overflow: hidden; }
+  .tl-scroll { overflow-y: auto; max-height: 620px; }
+  .tl-row { display: flex; align-items: center; height: 22px; }
+  .tl-row.dim { opacity: .18; }
+  .tl-name { width: 170px; flex: 0 0 auto; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 8px; background: none; border: 0; text-align: left; color: var(--ink); }
+  .tl-name:hover { color: var(--phil); }
+  .tl-track { position: relative; flex: 1; height: 100%; }
+  .tl-track i { position: absolute; top: 0; bottom: 0; }
+  .tl-bar { position: absolute; top: 5px; height: 12px; border-radius: 6px; cursor: pointer; opacity: .9; min-width: 6px; background: var(--seg); border: 0; padding: 0; }
+  .tl-bar:hover, .tl-bar:focus-visible { opacity: 1; outline: 2px solid var(--ink); }
+  .tl-bar.alive { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 18px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 18px), transparent); }
+  .tl-head, .tl-axis, .tl-events { position: relative; margin-left: 170px; }
+  .tl-head { height: 44px; }
+  .tl-era { position: absolute; top: 0; bottom: 0; font-size: 11px; color: var(--muted); padding: 3px 6px; border-left: 1px dashed var(--hair-strong); white-space: nowrap; overflow: hidden; }
+  .tl-axis { height: 24px; border-top: 1.5px solid var(--ink); }
+  .tl-tick { position: absolute; top: 0; font-size: 11px; color: var(--muted); transform: translateX(-50%); padding-top: 4px; }
+  .tl-events { height: 50px; }
+  .tl-ev { position: absolute; top: 2px; transform: translateX(-50%); text-align: center; }
+  .tl-ev i { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); margin: 0 auto 3px; }
+  .tl-ev span { font-size: 10px; color: var(--muted); display: block; max-width: 88px; line-height: 1.25; }
+  .tl-foot { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.6; }
+  .tl-foot button { background: none; border: 0; padding: 0; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer; }
+  .tl-foot button:hover { color: var(--phil); }
+  @media (max-width: 760px) { .tl-name { width: 110px; font-size: 11px; } .tl-head, .tl-axis, .tl-events { margin-left: 110px; } .tl-ev span { display: none; } }
+  /* Карта */
+  .map-controls { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; font-size: 14px; align-items: center; }
+  .map-controls label { display: flex; align-items: center; gap: 7px; background: var(--surface); border: 1px solid var(--hair); border-radius: 999px; padding: 6px 14px; cursor: pointer; user-select: none; }
+  .map-controls input { accent-color: var(--phil); }
+  .map-note { font-size: 13px; color: var(--muted); margin-left: auto; }
+  #map { height: 540px; border-radius: var(--radius); border: 1px solid var(--hair); background: color-mix(in srgb, var(--tech) 13%, var(--paper)); z-index: 0; }
+  .leaflet-container { font-family: var(--font); }
+  .gvg-land { fill: var(--surface); stroke: var(--hair-strong); stroke-width: .7; }
+  .mk-b { stroke-width: 2; fill-opacity: .9; }
+  .mk-d { stroke-width: 2.5; fill: var(--surface) !important; fill-opacity: 1; }
+  .mk-m { fill: none !important; stroke-width: 1.6; stroke-dasharray: 5 7; stroke-opacity: .6; }
+  .seg-phil { stroke: var(--phil); fill: var(--phil); } .seg-tech { stroke: var(--tech); fill: var(--tech); }
+  .seg-synth { stroke: var(--synth); fill: var(--synth); } .seg-base { stroke: var(--base); fill: var(--base); }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-lg); }
+  .leaflet-popup-content { font-size: 13px; line-height: 1.5; margin: 12px 16px; }
+  .leaflet-popup-content b { font-size: 14px; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+  .leaflet-bar a { background: var(--surface); color: var(--ink); border-color: var(--hair); }
+  .leaflet-control-attribution { background: color-mix(in srgb, var(--surface) 80%, transparent) !important; color: var(--muted); }
+  .leaflet-control-attribution a { color: var(--link); }
+  .pop-link { color: var(--link); cursor: pointer; text-decoration: underline; font-weight: 600; background: none; border: 0; padding: 0; font: inherit; }
+  :root[data-theme="dark"] .gvg-tiles { filter: none; }
+  /* Граф */
+  .net-wrap { position: relative; overflow: hidden; }
+  #net { display: block; width: 100%; height: 580px; cursor: grab; touch-action: none; }
+  #net text { font: 600 11px var(--font); fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; pointer-events: none; }
+  .net-legend { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); padding: 12px 16px; border-top: 1px solid var(--hair); }
+  .net-legend .ln { display: inline-block; width: 26px; height: 0; margin-right: 6px; vertical-align: middle; border-top: 2.5px solid; }
+  .net-hint { position: absolute; top: 12px; right: 14px; font-size: 12px; color: var(--muted); background: color-mix(in srgb, var(--surface) 85%, transparent); padding: 4px 10px; border-radius: 14px; }
+  .net-reset { position: absolute; top: 12px; left: 14px; }
+  /* Сетки с графиками */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+  .split-wide { display: grid; grid-template-columns: 1.25fr 1fr; gap: 22px; }
+  .col { display: flex; flex-direction: column; gap: 22px; }
+  .chart-card { padding: 18px; }
+  .chart-card h3 { font-size: 12.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 12px; }
+  .chart-card .note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+  .members { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; min-height: 40px; }
+  .members .person-chip { cursor: pointer; }
+  @media (max-width: 900px) { .split, .split-wide { grid-template-columns: 1fr; } #map { height: 440px; } #net { height: 480px; } }
+</style>
+<script src="scripts/vendor/leaflet/leaflet.js" defer></script>
+<script src="scripts/vendor/topojson-client.min.js" defer></script>
+<script src="scripts/vendor/chart.umd.js" defer></script>
+<script src="scripts/vendor/d3.min.js" defer></script>
+<script src="scripts/site.js" defer></script>
+<script src="scripts/pages/atlas.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+  <div class="wrap">
+    <header class="page-head">
+      <div class="kicker">Дашборд</div>
+      <h1>Атлас персоналий</h1>
+      <p class="lead">От Платона до критиков LLM: жизненные пути, география, научные связи, университеты и темы авторов, которых читал семинар. Фильтр сверху действует на линию времени, карту, граф и университеты; клик по имени открывает досье.</p>
+    </header>
+  </div>
+  <div class="atlas-bar">
+    <div class="wrap">
+      <div class="chips" role="group" aria-label="Линия" id="seg-filter"></div>
+      <label class="field"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="visually-hidden">Найти персоналию</span><input type="search" id="atlas-q" placeholder="Имя, область, ключевое слово…"></label>
+      <span class="result-count" id="atlas-count" style="margin-left:0" aria-live="polite"></span>
+      <nav class="atlas-toc" aria-label="Разделы атласа">
+        <a href="#tl">Время</a><a href="#geo">География</a><a href="#net-sec">Связи</a><a href="#by-meeting">Встречи</a>
+        <a href="#themes">Темы</a><a href="#inst">Университеты</a><a href="#stats">Статистика</a>
+      </nav>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="kpis" id="kpis"></div>
+
+    <section class="section" id="tl">
+      <div class="section-head"><div><h2>Линия времени</h2>
+        <p>Жизненные пути на фоне эпох — от «Курса общей лингвистики» до трансформеров. Растворяющийся край полосы — человек жив.</p></div></div>
+      <div class="seglegend" id="seglegend"></div>
+      <div class="panel-card tl-wrap">
+        <div class="tl-head" id="tlEras"></div>
+        <div class="tl-scroll"><div id="tlGrid"></div></div>
+        <div class="tl-axis" id="tlAxis"></div>
+        <div class="tl-events" id="tlEvents"></div>
+        <div class="tl-foot" id="tlFoot"></div>
+      </div>
+    </section>
+
+    <section class="section" id="geo">
+      <div class="section-head"><div><h2>География судеб</h2>
+        <p>Где рождались и где умирали герои семинара. Пунктир — траектория «рождение → смерть»: эмиграции Якобсона и Трубецкого, путь Бар-Хиллела из Вены в Иерусалим, оксфордцы, осевшие в Беркли. Для ныне живущих и тех, чьи места не документированы, точек нет.</p></div></div>
+      <div class="map-controls">
+        <label><input type="checkbox" id="cbBirth" checked> ● Места рождения</label>
+        <label><input type="checkbox" id="cbDeath" checked> ○ Места смерти</label>
+        <label><input type="checkbox" id="cbMigr" checked> ⋯ Траектории</label>
+        <label title="Детальная подложка OpenStreetMap / CARTO; без интернета используется встроенная карта"><input type="checkbox" id="cbTiles"> Подробная подложка</label>
+        <span class="map-note" id="mapNote"></span>
+      </div>
+      <div id="map" role="region" aria-label="Карта мест рождения и смерти"></div>
+    </section>
+
+    <section class="section" id="net-sec">
+      <div class="section-head"><div><h2>Граф научных связей</h2>
+        <p>Учителя и ученики, соавторы, оппоненты — и пунктирные «идейные линии» через века: от Платона к нативизму Хомского, от принципа Фёрса к word2vec, от гавагая Куайна к осьминогу Бендер и Коллера. Наведите на узел, чтобы увидеть соседей.</p></div></div>
+      <div class="panel-card net-wrap">
+        <button class="btn btn-ghost btn-sm net-reset" type="button" id="netReset">Сбросить вид</button>
+        <div class="net-hint">перетаскивайте · колесо — масштаб · клик — досье</div>
+        <svg id="net" role="img" aria-label="Граф научных связей между персоналиями"></svg>
+        <div class="net-legend">
+          <span><i class="ln" style="border-color:var(--ink)"></i>учитель → ученик</span>
+          <span><i class="ln" style="border-color:var(--tech)"></i>соавторы</span>
+          <span><i class="ln" style="border-color:var(--ghost)"></i>коллеги</span>
+          <span><i class="ln" style="border-top-style:dashed;border-color:var(--phil)"></i>оппоненты</span>
+          <span><i class="ln" style="border-top-style:dotted;border-color:var(--synth)"></i>идейная линия</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="by-meeting">
+      <div class="section-head"><div><h2>Встречи и персоналии</h2>
+        <p>Сколько авторов «привела» каждая встреча. Нажмите на столбец — откроется страница встречи.</p></div></div>
+      <div class="split">
+        <div class="panel-card chart-card"><h3>Персоналии по встречам</h3><div style="height:320px"><canvas id="meetingChart"></canvas></div></div>
+        <div class="panel-card chart-card"><h3>Век рождения по линиям программы</h3><div style="height:320px"><canvas id="centuryChart"></canvas></div>
+          <p class="note">Философские основания опираются на авторов конца XIX — начала XX века, технический поворот — на поколение, родившееся после 1940-го.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="themes">
+      <div class="section-head"><div><h2>Общие темы</h2>
+        <p>Тематические сообщества внутри базы. Нажмите на тему — появятся её участники; на участника — откроется досье.</p></div>
+        <a class="btn btn-ghost btn-sm" href="topics.html">Все темы и понятия →</a></div>
+      <div class="split">
+        <div><div class="chips" id="themeChips"></div><div class="members" id="themeMembers"></div></div>
+        <div class="panel-card chart-card"><h3>Размер тематических сообществ</h3><div style="height:380px"><canvas id="themeChart"></canvas></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="inst">
+      <div class="section-head"><div><h2>Университеты и центры</h2>
+        <p>Где учились и работали персоналии — по столбцам «Alma mater» и «Аффилиация» базы. Беркли, MIT и Гарвард оказываются общими перекрёстками философии языка и компьютерной лингвистики.</p></div></div>
+      <div class="split">
+        <div class="panel-card chart-card"><h3>Учреждения, где пересекались двое и больше</h3><div style="height:460px"><canvas id="instChart"></canvas></div></div>
+        <div><div class="chips" id="instChips"></div><div class="members" id="instMembers"></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="stats">
+      <div class="section-head"><div><h2>Биографическая статистика</h2>
+        <p>Сухие числа базы: кто сколько прожил, откуда родом, кто ещё с нами и в каком возрасте вышла первая главная работа. Герменевтика полезна для долголетия: Гадамер — 102 года, Леви-Строс — 100.</p></div></div>
+      <div class="split-wide">
+        <div class="panel-card chart-card"><h3>Продолжительность жизни (ушедшие)</h3><div style="height:540px"><canvas id="lifeChart"></canvas></div></div>
+        <div class="col">
+          <div class="panel-card chart-card"><h3>Страна происхождения</h3><div style="height:300px"><canvas id="countryChart"></canvas></div></div>
+          <div class="panel-card chart-card"><h3>Статус на июнь 2026</h3><div style="height:190px"><canvas id="aliveChart"></canvas></div></div>
+        </div>
+      </div>
+      <div class="panel-card chart-card" style="margin-top:22px"><h3>Возраст к первой главной работе</h3><div style="height:360px"><canvas id="ageChart"></canvas></div>
+        <p class="note">По первому датированному труду из столбца «Основные труды». Каждая точка — персоналия; нажмите, чтобы открыть досье.</p></div>
+    </section>
+  </div>
+</main>
+<div id="site-footer"></div>
+</body>
+</html>
