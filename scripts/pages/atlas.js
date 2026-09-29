@@ -125,27 +125,40 @@ GVG.page((D) => {
       }).addTo(map);
     }).catch(() => { $('#mapNote').textContent = 'Не удалось загрузить контуры стран.'; });
 
-    let tiles = null, tileErrors = 0, tileLoads = 0;
+    // Подложки по порядку: CARTO (в тон сайту), затем стандартный OpenStreetMap.
+    // Если ни одна не грузится — остаётся встроенная карта.
+    const OSM = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+    const PROVIDERS = [
+      {
+        url: () => `https://{s}.basemaps.cartocdn.com/${GVG.currentTheme() === 'dark' ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`,
+        opts: { subdomains: 'abcd', className: 'gvg-tiles', attribution: OSM + ' · © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>' }
+      },
+      {
+        url: () => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        opts: { className: 'gvg-tiles gvg-tiles-osm', maxZoom: 19, attribution: OSM }
+      }
+    ];
+    let tiles = null, timer = null;
     const note = $('#mapNote');
-    function setTiles(on) {
+    function setTiles(on, idx = 0) {
+      clearTimeout(timer);
       if (tiles) { map.removeLayer(tiles); tiles = null; }
       if (!on) return;
-      tileErrors = 0; tileLoads = 0;
-      const style = GVG.currentTheme() === 'dark' ? 'dark_all' : 'light_all';
-      tiles = L.tileLayer(`https://{s}.basemaps.cartocdn.com/${style}/{z}/{x}/{y}{r}.png`, {
-        maxZoom: 18, subdomains: 'abcd', className: 'gvg-tiles',
-        attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
-      });
-      tiles.on('tileload', () => { tileLoads++; note.textContent = ''; });
-      tiles.on('tileerror', () => {
-        tileErrors++;
-        if (tileErrors >= 4 && tileLoads === 0) {
-          setTiles(false);
-          $('#cbTiles').checked = false;
-          note.textContent = 'Тайлы недоступны — показана встроенная карта.';
-        }
-      });
-      tiles.addTo(map);
+      if (idx >= PROVIDERS.length) {
+        $('#cbTiles').checked = false;
+        note.textContent = 'Подложка недоступна — показана встроенная карта.';
+        return;
+      }
+      const p = PROVIDERS[idx];
+      let errors = 0, loads = 0;
+      const next = () => setTiles(true, idx + 1);
+      const layer = L.tileLayer(p.url(), { maxZoom: 18, ...p.opts });
+      // События от уже снятого слоя игнорируем (не вызываем off(): им Leaflet убирает подпись источника)
+      layer.on('tileload', () => { if (layer !== tiles) return; loads++; clearTimeout(timer); note.textContent = ''; });
+      layer.on('tileerror', () => { if (layer === tiles && ++errors >= 4 && loads === 0) next(); });
+      // Если тайлы не пришли ни с ошибкой, ни успешно (сеть «висит») — пробуем следующий источник
+      timer = setTimeout(() => { if (loads === 0) next(); }, 8000);
+      tiles = layer.addTo(map);
     }
     const cbTiles = $('#cbTiles');
     cbTiles.checked = /^https?:$/.test(location.protocol);

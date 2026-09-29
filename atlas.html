@@ -77,7 +77,9 @@
   .leaflet-control-attribution { background: color-mix(in srgb, var(--surface) 80%, transparent) !important; color: var(--muted); }
   .leaflet-control-attribution a { color: var(--link); }
   .pop-link { color: var(--link); cursor: pointer; text-decoration: underline; font-weight: 600; background: none; border: 0; padding: 0; font: inherit; }
-  :root[data-theme="dark"] .gvg-tiles { filter: none; }
+  /* У OpenStreetMap нет тёмного стиля — затемняем фильтром */
+  :root[data-theme="dark"] .gvg-tiles-osm { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .gvg-tiles-osm { filter: invert(1) hue-rotate(180deg) brightness(.9) contrast(.9); } }
   /* Граф */
   .net-wrap { position: relative; overflow: hidden; }
   #net { display: block; width: 100%; height: 580px; cursor: grab; touch-action: none; }
@@ -149,7 +151,7 @@
         <label><input type="checkbox" id="cbBirth" checked> ● Места рождения</label>
         <label><input type="checkbox" id="cbDeath" checked> ○ Места смерти</label>
         <label><input type="checkbox" id="cbMigr" checked> ⋯ Траектории</label>
-        <label title="Детальная подложка OpenStreetMap / CARTO; без интернета используется встроенная карта"><input type="checkbox" id="cbTiles"> Подробная подложка</label>
+        <label title="Подробная подложка CARTO, при недоступности — OpenStreetMap; без интернета используется встроенная карта"><input type="checkbox" id="cbTiles"> Подробная подложка</label>
         <span class="map-note" id="mapNote"></span>
       </div>
       <div id="map" role="region" aria-label="Карта мест рождения и смерти"></div>
