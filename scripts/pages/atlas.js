@@ -125,17 +125,19 @@ GVG.page((D) => {
       }).addTo(map);
     }).catch(() => { $('#mapNote').textContent = 'Не удалось загрузить контуры стран.'; });
 
-    // Подложки по порядку: CARTO (в тон сайту), затем стандартный OpenStreetMap.
-    // Если ни одна не грузится — остаётся встроенная карта.
+    // Подложки по порядку: стандартный OpenStreetMap, затем его гуманитарный стиль (HOT).
+    // Оба работают без ключа API. Если ни одна не грузится — остаётся встроенная карта.
+    // (CARTO не используем: без ключа он отдаёт вместо карты картинку «API key required».)
     const OSM = '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
     const PROVIDERS = [
       {
-        url: () => `https://{s}.basemaps.cartocdn.com/${GVG.currentTheme() === 'dark' ? 'dark_all' : 'light_all'}/{z}/{x}/{y}{r}.png`,
-        opts: { subdomains: 'abcd', className: 'gvg-tiles', attribution: OSM + ' · © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>' }
-      },
-      {
         url: () => 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
         opts: { className: 'gvg-tiles gvg-tiles-osm', maxZoom: 19, attribution: OSM }
+      },
+      {
+        url: () => 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+        opts: { className: 'gvg-tiles gvg-tiles-osm', subdomains: 'abc', maxZoom: 19,
+          attribution: OSM + ' · стиль <a href="https://www.hotosm.org/" target="_blank" rel="noopener">HOT</a>, <a href="https://openstreetmap.fr/" target="_blank" rel="noopener">OSM France</a>' }
       }
     ];
     let tiles = null, timer = null;
