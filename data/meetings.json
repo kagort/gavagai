@@ -326,9 +326,19 @@
      "url": "https://disk.yandex.ru/i/kbZ4QftyJjk5Gg"
     }
    ],
-   "concepts": [],
+   "concepts": [
+    "корпус",
+    "коллокация",
+    "коллигация",
+    "конкорданс",
+    "n-грамма",
+    "мера ассоциации",
+    "закон Ципфа",
+    "вектор слова",
+    "дистрибуция / дисперсия"
+   ],
    "audio": "",
-   "notes": ""
+   "notes": "materials/meetings/meeting6.md"
   },
   {
    "id": 7,
